@@ -42,8 +42,6 @@ def main_page():
         return redirect(url_for("home", msg="로그인 정보가 존재하지 않습니다."))
 
 
-db = client.bestseller
-
 # 교보문고 베스트셀러 url에서 책의 제목, 저자, 출판사, 발간 날짜, 이미지 정보를 가져오고 bestseller 콜렉션에 저장
 @app.route('/insert_bookinfo')
 def insert_bookinfo():

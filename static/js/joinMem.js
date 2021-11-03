@@ -24,7 +24,7 @@ $('#user_id').keyup(function () {
         data: {},
         success: function (response) {
             let bookReview = response['bookReview']
-
+            console.log(bookReview)
             for (let i = 0; i < bookReview.length; i++) {
                 let userInput = $('#user_id').val()
                 if (userInput === bookReview[i]['id']) {
