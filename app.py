@@ -109,6 +109,7 @@ def best_seller():
     except jwt.exceptions.DecodeError:
         return redirect(url_for("home", msg="로그인 정보가 존재하지 않습니다."))
 
+#테스트
 
 # @app.route('/login_main')
 # def login_main():
