@@ -9,7 +9,7 @@
     <!--  open graph  -->
     <meta property="og:type" content="website"/>
     <meta property="og:site_name" content="bookReview"/>
-    <meta property="og:title" content=""/>
+    <meta property="og:title" content="모두의 책 리뷰"/>
     <meta property="og:description" content=""/>
     <meta property="og:image" content=""/>
     <meta property="og:url" content=""/>
@@ -58,19 +58,20 @@
     <div class="join-form">
         <p class="title">모두의 책 리뷰에 오신 것을 환영합니다.</p>
         <div id="id">
-            <input type="text" placeholder="아이디를 입력해주세요."/>
+            <input type="text" placeholder="아이디를 입력해주세요." id="user_id" autocomplete="off"/>
         </div>
         <p id="wrongId"></p>
+        <hr>
         <div id="pw">
-            <input type="password" placeholder="비밀번호를 입력해주세요."/>
+            <input type="password" placeholder="비밀번호를 입력해주세요." id="user_pw"/>
         </div>
         <div id="pw_again">
-            <input type="password" placeholder="비밀번호를 입력해주세요."/>
+            <input type="password" placeholder="비밀번호를 다시 입력해주세요." id="user_pw_chk"/>
         </div>
         <p id="wrongPw"></p>
-        <a href="/login">
-            <button id="join">회원가입</button>
-        </a>
+        <button id="join">회원가입</button>
+
+        <hr>
     </div>
 
 </body>
