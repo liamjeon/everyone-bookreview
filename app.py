@@ -42,6 +42,57 @@ def main_page():
         return redirect(url_for("home", msg="로그인 정보가 존재하지 않습니다."))
 
 
+db = client.bestseller
+
+# 교보문고 베스트셀러 url에서 책의 제목, 저자, 출판사, 발간 날짜, 이미지 정보를 가져오고 bestseller 콜렉션에 저장
+@app.route('/insert_bookinfo')
+def insert_bookinfo():
+    print("inser_bookinfo")
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
+    data = requests.get('http://www.kyobobook.co.kr/bestSellerNew/bestseller.laf?orderClick=d79', headers=headers)
+
+    soup = BeautifulSoup(data.text, 'html.parser')
+
+    lis = soup.select('#main_contents > ul > li')
+
+    db.bestseller.drop()  # bestseller 실시간 최신화를 위해 콜렉션 삭제
+
+    for li in lis:
+        image_url = li.select_one('div.cover > a > img')['src']
+        title = li.select_one('div.detail > div.title > a > strong').text
+        if title is not None:
+            stat = li.select_one('div.detail > div.author')
+            stat_temps = stat.text.split()
+            author = ""
+            publisher = ""
+            publish_date = ""
+            flag = 0
+            for stat_temp in stat_temps:
+                if stat_temp == "|":
+                    flag += 1
+                elif stat_temp == "저자" or stat_temp == "더보기":
+                    pass
+                else:
+                    if flag == 0:
+                        author += stat_temp + " "
+                    elif flag == 1:
+                        publisher += stat_temp + " "
+                    else:
+                        publish_date += stat_temp + " "
+            doc = {
+                'title': title,
+                'author': author,
+                'publish_date': publish_date,
+                'publisher': publisher,
+                'image_url': image_url
+            }
+            db.bestseller.insert_one(doc)
+
+    bestseller = list(db.bestseller.find({}, {'_id': False}))
+    return jsonify({'bestseller': bestseller})
+
+
 @app.route('/bestSeller')
 def best_seller():
     token_receive = request.cookies.get('mytoken')
