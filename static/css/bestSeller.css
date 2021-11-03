@@ -178,4 +178,8 @@ input::-webkit-calendar-picker-indicator {
 #modal-input-box{
 
 }
-/**/
+
+
+.hidden {
+    display: none;
+}

@@ -26,6 +26,19 @@ def login():
     return render_template('login.html')
 
 
+@app.route('/bestSeller')
+def bestSeller():
+    rows = db.articles.find({}, {'id': False})
+    token_receive = request.cookies.get('mytoken')
+    if token_receive:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        user_info = db.bookReview_team.find_one({"id": payload['id']})
+        user_id = user_info['id']
+        return render_template('bestSeller.html', rows=rows, user_id=user_id)
+    else:
+        return render_template('bestSeller.html', rows=rows)
+
+
 @app.route('/main_page')
 def main_page():
     rows = db.articles.find({}, {'id': False})
@@ -87,8 +100,6 @@ def insert_bookinfo():
 
     bestseller = list(db.bestseller.find({}, {'_id': False}))
     return jsonify({'bestseller': bestseller})
-
-
 
 
 @app.route('/joinMem')
@@ -170,18 +181,17 @@ def logins():
             'exp': datetime.utcnow() + timedelta(seconds=60 * 60 * 24)
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256').decode('utf-8')
-        print(payload)
         return jsonify({'result': 'success', 'token': token})
 
     else:
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
 
 
-
 @app.route('/signup', methods=['GET'])
 def signup():
     bookReview = list(db.bookReview_team.find({}, {'_id': False}))
     return jsonify({'bookReview': bookReview})
+
 
 @app.route('/memo', methods=['GET'])
 def listing():

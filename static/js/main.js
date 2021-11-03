@@ -28,3 +28,8 @@ $('.userSelect').click(function () {
 $('.select_close').click(function () {
     $('#userSelect_click').removeClass('hide-out');
 })
+
+
+$('.join_mem').click(function() {
+    $.removeCookie('mytoken', {path: '/'}); // = > true
+})
