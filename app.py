@@ -158,8 +158,9 @@ def logins():
             'exp': datetime.utcnow() + timedelta(seconds=60 *60 *24)
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256').decode('utf-8')
-
+        print("1")
         return jsonify({'result': 'success', 'token': token})
+
 
     else:
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
