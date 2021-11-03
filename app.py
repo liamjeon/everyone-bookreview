@@ -96,7 +96,7 @@ def join_info():
 
     db.bookReview_team.insert(doc)
 
-    return jsonify({'result': 'success', 'msg': '가입이 되었습니다.'})
+    return jsonify({'msg': '가입이 완료되었습니다!'})
 
 
 @app.route('/viewList', methods=['POST'])
@@ -122,7 +122,6 @@ def view():
         image = soup.select_one('meta[property="og:image"]')['content']
         desc = soup.select_one('meta[property="og:description"]')['content']
         author = soup.select_one('meta[property="og:author"]')['content'].split('-')[0]
-        print(author)
         price = soup.select_one('meta[property="og:price"]')['content']
 
         doc = {
@@ -158,7 +157,7 @@ def logins():
             'exp': datetime.utcnow() + timedelta(seconds=60 * 60 * 24)
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256').decode('utf-8')
-
+        print(payload)
         return jsonify({'result': 'success', 'token': token})
 
     else:
@@ -180,6 +179,10 @@ def logins():
 #     except jwt.exceptions.DecodeError:
 #         return jsonify({'result': 'fail', 'msg': '로그인 정보가 존재하지 않습니다.'})
 
+@app.route('/signup', methods=['GET'])
+def signup():
+    bookReview = list(db.bookReview_team.find({}, {'_id': False}))
+    return jsonify({'bookReview': bookReview})
 
 @app.route('/memo', methods=['GET'])
 def listing():
@@ -188,4 +191,4 @@ def listing():
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=2000, debug=True)
+    app.run('0.0.0.0', port=3000, debug=True)

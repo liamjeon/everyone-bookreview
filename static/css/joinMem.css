@@ -135,7 +135,7 @@ p {
 
 .join-form input {
     display: block;
-    margin: 35px auto auto auto;
+    margin: 10px auto auto auto;
     width: 90%;
     height: 60px;
     box-sizing: border-box;
@@ -144,6 +144,27 @@ p {
     padding-left: 20px;
 }
 
+.join-form #id {
+    margin : 30px auto;
+}
+
+.join-form #pw {
+    margin : 30px auto;
+}
+
+.join-form #wrongId {
+    position: relative;
+    bottom: 20px;
+    left: 30px;
+    font-weight: bold;
+}
+
+.join-form #wrongPw {
+    position: relative;
+    top:10px;
+    left:30px;
+    font-weight: bold;
+}
 
 .join-form #join {
     width: 90%;
@@ -157,3 +178,4 @@ p {
     font-weight: bold;
     font-size: 30px;
 }
+
