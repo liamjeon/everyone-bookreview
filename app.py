@@ -49,7 +49,7 @@ def best_seller():
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         user_info = db.bookReview_team.find_one({"id": payload['id']})
         user_id = user_info['id']
-
+        print(payload)
         html = urlopen('https://www.kyobobook.co.kr/bestSellerNew/bestseller.laf')
         data = BeautifulSoup(html, 'html.parser')
 
