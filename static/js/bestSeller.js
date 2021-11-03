@@ -43,4 +43,3 @@ function show_bestseller(){
         }
     })
 }
-//

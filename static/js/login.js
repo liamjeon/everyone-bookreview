@@ -18,4 +18,3 @@ $('#login').click(function() {
         }
     })
 })
-/**/
