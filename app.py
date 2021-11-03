@@ -4,7 +4,6 @@ from datetime import datetime, timedelta
 import hashlib
 from bs4 import BeautifulSoup
 import requests
-from urllib.request import urlopen
 
 app = Flask(__name__)
 
@@ -90,41 +89,6 @@ def insert_bookinfo():
     return jsonify({'bestseller': bestseller})
 
 
-@app.route('/bestSeller')
-def best_seller():
-    token_receive = request.cookies.get('mytoken')
-    try:
-        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        user_info = db.bookReview_team.find_one({"id": payload['id']})
-        user_id = user_info['id']
-        print(payload)
-        html = urlopen('https://www.kyobobook.co.kr/bestSellerNew/bestseller.laf')
-        data = BeautifulSoup(html, 'html.parser')
-
-        book_page_urls = []
-
-        return render_template('bestSeller.html', user_id=user_id)
-    except jwt.ExpiredSignatureError:
-        return redirect(url_for("home", msg="로그인 시간이 만료되었습니다."))
-    except jwt.exceptions.DecodeError:
-        return redirect(url_for("home", msg="로그인 정보가 존재하지 않습니다."))
-
-#테스트
-
-# @app.route('/login_main')
-# def login_main():
-#     rows = db.articles.find({}, {'id': False})
-#     token_receive = request.cookies.get('mytoken')
-#
-#     try:
-#         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-#         user_info = db.bookReview_team.find_one({"id": payload['id']})
-#
-#         return render_template('main.html', id=user_info["id"], rows=rows)
-#     except jwt.ExpiredSignatureError:
-#         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
-#     except jwt.exceptions.DecodeError:
-#         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
 
 @app.route('/joinMem')
@@ -213,20 +177,6 @@ def logins():
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
 
 
-#
-# def api_valid():
-#     token_receive = request.cookies.get('mytoken')
-#
-#     try:
-#         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-#         print(payload)
-#
-#         userinfo = db.bookReview_team.find_one({'id': payload['id']}, {'_id': False})
-#         return jsonify({'result': 'success', 'id': userinfo['id']})
-#     except jwt.ExpiredSignatureError:
-#         return jsonify({'result': 'fail', 'msg': '로그인 시간이 만료되었습니다.'})
-#     except jwt.exceptions.DecodeError:
-#         return jsonify({'result': 'fail', 'msg': '로그인 정보가 존재하지 않습니다.'})
 
 @app.route('/signup', methods=['GET'])
 def signup():
