@@ -34,6 +34,9 @@ def login():
     return render_template('login.html')
 
 
+
+
+
 @app.route('/bestSeller')
 def bestSeller():
     # rows = db.articles.find({}, {'id': False})
@@ -190,6 +193,33 @@ def signup():
 def listing():
     articles = list(db.articles.find({}, {'_id': False}))
     return jsonify({'all_articles': articles})
+
+
+@app.route('/send_review', methods=['POST'])
+def send_review():
+    title_receive = request.form['title_give']
+    review_receive = request.form['review_give']
+    id_receive = request.form['id_give']
+
+    doc = {
+        'title': title_receive,
+        'review': review_receive,
+        'user_id': id_receive,
+    }
+
+    db.bookReview_reviews.insert(doc)
+    reviews = list(db.bookReview_reviews.find({"title": title_receive}, {'_id': False}))
+    # reviews = list(db.bookReview_reviews.find({}, {'_id': False}))
+    print(reviews)
+    return jsonify({'reviews': reviews})
+
+
+@app.route('/get_reviews', methods=['POST'])
+def get_reviews():
+    title_receive = request.form['title_give']
+    reviews = list(db.bookReview_reviews.find({"title": title_receive}, {'_id': False}))
+    print(reviews)
+    return jsonify({'reviews': reviews})
 
 
 if __name__ == '__main__':
