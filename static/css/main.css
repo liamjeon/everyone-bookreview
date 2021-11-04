@@ -374,3 +374,8 @@ input, button, textarea {
     color: #fed;
     border: 0;
 }
+
+.modal-image{
+    width: 230px;
+    height: 330px;
+}

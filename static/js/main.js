@@ -14,6 +14,8 @@ $('.review_close').click(function () {
     $('.review_button').toggleClass('opacity-on')
 })
 
+
+
 $('.upload_review').click(function () {
     let url = $('#reviewURL').val()
     let reviewMemo = $('#reviewMemo').val()
@@ -29,11 +31,12 @@ $('.upload_review').click(function () {
     })
 })
 
-
 $('.userSelect').click(function () {
     $('#userSelect_click').toggleClass('hide-out');
 })
 
+
+//모달창 클릭
 $('.select_close').click(function () {
     $('#userSelect_click').removeClass('hide-out');
 })
@@ -53,4 +56,23 @@ function check_login() {
         $('.login_no').removeClass("hidden");
         $('.login_yes').addClass("hidden");
     }
+}
+
+function select_userbook(clicked_id){
+    document.getElementById("modal").style.display = 'block';
+
+    let curr_Element = document.getElementById(clicked_id);
+    let child_Elements = curr_Element.childNodes;
+    console.log(curr_Element);
+    console.log(child_Elements);
+
+    let title = child_Elements[3].innerHTML;
+    let img_url = child_Elements[1]['currentSrc'];
+
+    document.getElementById("modal_img_url").src = img_url;
+    document.getElementById("modal_title").innerText = title;
+}
+
+function modal_close(){
+     document.getElementById("modal").style.display = 'none';
 }
