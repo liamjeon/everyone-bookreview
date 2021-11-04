@@ -19,6 +19,7 @@ SECRET_KEY = '18'
 def home():
     rows = db.articles.find({}, {'id': False})
     token_receive = request.cookies.get('mytoken')
+    
     if token_receive:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         user_info = db.bookReview_team.find_one({"id": payload['id']})
