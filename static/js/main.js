@@ -99,7 +99,5 @@ function select_userbook(clicked_id) {
             document.getElementById('review_content').innerText = review_content;
         }
     })
-
-
 }
 
