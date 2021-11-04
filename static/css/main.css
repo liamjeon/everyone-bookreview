@@ -397,3 +397,177 @@ input, button, textarea {
     transition: .5s;
 }
 
+.container{
+    width: 80%;
+    margin-top: 140px;
+    padding-left: 100px;
+}
+
+.title{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.book-box-bg{
+    width: 100%;
+    background-color: blueviolet;
+    text-align: center;
+
+    padding-left: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.book-box{
+    width: 20%;
+    height: 400px;
+    text-align: center;
+    display: block;
+    padding: 20px;
+    background-color: azure;
+    /*background-color: lightcyan;*/
+    border-radius: 20px;
+    float: left;
+    margin: 10px;
+}
+
+.section {
+    padding: 1rem 1.5rem;
+    max-width: 750px;
+    margin: auto;
+}
+
+.is-sparta {
+    color: #0000FF !important;
+}
+
+.button.is-sparta {
+    background-color: #148CFF;
+    border-color: transparent;
+    color: #fff !important;
+}
+
+.button.is-sparta.is-outlined {
+    background-color: transparent;
+    border-color: #148CFF;
+    color: #148CFF !important;
+}
+
+.modal-content {
+    width: 600px;
+    max-width: 80%;
+}
+
+.image img {
+    object-fit:cover;
+    width:100%;
+    height:100%;
+}
+
+.btn-addbook{
+    width: 20%;
+    height: 80px;
+    position:fixed;
+    margin:0 auto;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+}
+
+.modal-text-margin{
+    margin: 10px;
+}
+
+#modal.modal-overlay {
+    position: fixed;
+    left: 29%;
+    top: 17%;
+    border-radius: 10px;
+}
+
+#modal .modal-window {
+    background-color: snow;
+    border-radius: 20px;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    width: 800px;
+    height: 610px;
+    padding: 10px;
+}
+
+#modal .title {
+    font-size: 30px;
+    color: black;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+#modal .content {
+    margin: auto;
+    /*margin-top: 20px;*/
+    padding: 0px 10px;
+    text-shadow: 1px 1px 2px gray;
+    color: black;
+    text-align: center;
+    float: left;
+}
+
+#modal .bestseller-close-btn{
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+
+    border-radius: 20px;
+    background:#1AAB8A;
+    color:#fff;
+    border:none;
+    border-radius: 20px;
+    height:40px;
+    font-size:1.6em;
+    padding:0 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+}
+
+#modal .review {
+    width: 50%;
+    height: 500px;
+    background-color: blueviolet;
+
+    float: left;
+}
+
+.hidden {
+    display: none;
+}
+
+.modal-float{
+    float: left;
+    width: 50%;
+    margin: auto;
+    padding-left: 50px;
+}
+.modal-review-container{
+    width: 100%;
+    height: 400px;
+    margin-top: 20px;
+    margin: auto;
+    background-color: lightcyan;
+}
+
+.modal-review-textbox{
+    width: 100%;
+    color: black;
+    background-color: white;
+    border-width: 1;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
