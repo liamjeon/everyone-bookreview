@@ -92,6 +92,7 @@ p {
     display: flex;
     justify-content: center;
     text-align: center;
+    font-family: 'Hi Melody', cursive;
 }
 
 .nav-bar .center .main_page > a {
