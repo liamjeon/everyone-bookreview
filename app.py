@@ -18,7 +18,15 @@ SECRET_KEY = '18'
 @app.route('/')
 def home():
     rows = db.articles.find({}, {'id': False})
-    return render_template('index.html', rows=rows)
+    token_receive = request.cookies.get('mytoken')
+    if token_receive:
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        user_info = db.bookReview_team.find_one({"id": payload['id']})
+        user_id = user_info['id']
+        return render_template('index.html', rows=rows, user_id=user_id)
+    else:
+        return render_template('index.html', rows=rows)
+
 
 
 @app.route('/login')
@@ -28,30 +36,15 @@ def login():
 
 @app.route('/bestSeller')
 def bestSeller():
-    rows = db.articles.find({}, {'id': False})
+    # rows = db.articles.find({}, {'id': False})
     token_receive = request.cookies.get('mytoken')
     if token_receive:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         user_info = db.bookReview_team.find_one({"id": payload['id']})
         user_id = user_info['id']
-        return render_template('bestSeller.html', rows=rows, user_id=user_id)
+        return render_template('bestSeller.html', user_id=user_id)
     else:
-        return render_template('bestSeller.html', rows=rows)
-
-
-@app.route('/main_page')
-def main_page():
-    rows = db.articles.find({}, {'id': False})
-    token_receive = request.cookies.get('mytoken')
-    try:
-        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        user_info = db.bookReview_team.find_one({"id": payload['id']})
-        user_id = user_info['id']
-        return render_template('main.html', rows=rows, user_id=user_id)
-    except jwt.ExpiredSignatureError:
-        return redirect(url_for("home", msg="로그인 시간이 만료되었습니다."))
-    except jwt.exceptions.DecodeError:
-        return redirect(url_for("home", msg="로그인 정보가 존재하지 않습니다."))
+        return render_template('bestSeller.html')
 
 
 # 교보문고 베스트셀러 url에서 책의 제목, 저자, 출판사, 발간 날짜, 이미지 정보를 가져오고 bestseller 콜렉션에 저장
@@ -200,4 +193,4 @@ def listing():
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=3000, debug=True)
+    app.run('0.0.0.0', port=5000, debug=True)

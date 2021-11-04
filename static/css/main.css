@@ -36,6 +36,10 @@ input, button, textarea {
     display: none !important;
 }
 
+.hidden {
+    display: none;
+}
+
 .show {
     opacity: 1 !important;
 }
@@ -91,17 +95,24 @@ input, button, textarea {
     position: relative;
 }
 
+.nav-bar .center .main_menu > a:hover {
+    text-decoration: underline;
+}
+
 .nav-bar .center .main_menu > a::before {
     content: '';
-    border-right: 1px solid #444;
+    border-right: 1px solid #777;
     height: 15px;
     position: absolute;
     right: 0;
 }
 
-.nav-bar .center .main_menu > a:last-child::before {
+.nav-bar .center .main_menu > a:first-child::before {
     content: '';
-    border: 0;
+    border-left: 1px solid #777;
+    height: 15px;
+    position: absolute;
+    left:0;
 }
 
 .review {
@@ -114,7 +125,7 @@ input, button, textarea {
     margin: auto;
     left: 0;
     right: 0;
-    top: 300px;
+    top: 250px;
     transition: display .5s;
     display: none;
     background-color: #fff;
@@ -149,12 +160,21 @@ input, button, textarea {
     border-radius: 10%;
 }
 
+.review .material-icons {
+    font-size: 40px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 5px;
+}
+
 .review_button {
     width: 100px;
     max-width: 100px;
     height: 80px;
     position: fixed;
-    top: 100px;
+    bottom: 50px;
     right: 0;
     left: 0;
     margin: auto;
@@ -163,18 +183,25 @@ input, button, textarea {
     border-radius: 50%;
     cursor: pointer;
     z-index: 20;
+    transition: .5s;
+}
+
+.opacity {
+    opacity: .6
 }
 
 /*book review*/
 .book-review {
-    width: 100%;
-    max-width: 1000px;
-    margin: 400px auto;
+    width: 1200px;
+    max-width: 1200px;
+    margin: 100px auto;
     display: block;
     flex-wrap: wrap;
     justify-content: center;
     border-left: 3px solid #fed;
     border-right: 3px solid #fed;
+    position: relative;
+    left: -100px;
 }
 
 .book-review .book-review-info {
@@ -191,6 +218,7 @@ input, button, textarea {
 
 .book-review .userSelect {
     width: 20%;
+    height: 300px;
     border: 1px solid #999;
     margin: 15px;
     cursor: pointer;
@@ -204,8 +232,8 @@ input, button, textarea {
 }
 
 .book-review .userSelect .book_img {
-    width: 140px;
-    height: 194px;
+    width: 180px;
+    height: 230px;
     position: relative;
     left: 0;
     right: 0;
@@ -246,12 +274,10 @@ input, button, textarea {
     cursor: pointer;
     width: 100px;
     height: 40px;
-    margin:auto;
+    margin: auto;
     border-radius: 5px;
-    font-size : 22px;
+    font-size: 22px;
     font-weight: bold;
     color: #fed;
     border: 0;
 }
-
-/**/

@@ -51,10 +51,10 @@ function check_login() {
     let value = $.cookie('mytoken');
 
     if (value) {
-        $('.login_yes').removeClass("hidden");
         $('.login_no').addClass("hidden");
+        $('.login_yes').removeClass("hidden");
     } else {
-        $('.login_yes').addClass("hidden");
         $('.login_no').removeClass("hidden");
+        $('.login_yes').addClass("hidden");
     }
 }

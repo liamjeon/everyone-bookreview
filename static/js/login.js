@@ -11,7 +11,7 @@ $('#login').click(function() {
         success: function (response) {
             if (response['result'] == 'success') {
                 $.cookie('mytoken', response['token']);
-                window.location.replace('/main_page')
+                window.location.replace('/')
             } else {
                 alert(response['msg'])
             }
