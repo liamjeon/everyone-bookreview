@@ -1,11 +1,11 @@
-// <script>
-//     <link rel="stylesheet" href="../static/css/bestSeller.css"/>
-// </script>
-
 $(document).ready(function () {
     show_bestseller();
     check_login();
 });
+
+$('.book-box').click(function () {
+    $('#modal').toggleClass('opacity-off')
+})
 
 function input_bookreview(clicked_id){
     let title = document.getElementById("modal_title").innerHTML;

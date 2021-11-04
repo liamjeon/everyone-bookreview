@@ -15,13 +15,13 @@ $('.review_close').click(function () {
 })
 
 $('.userSelect').click(function () {
-    $('#modal').toggleClass('opacity-off')
+    $('.modal-hide').toggleClass('opacity-off')
     $('.book-review').toggleClass('opacity-on')
     $('.review_button').toggleClass('opacity-on')
 })
 
 $('.userbook-close-btn').click(function () {
-    $('#modal').toggleClass('opacity-off')
+    $('.modal-hide').toggleClass('opacity-off')
     $('.book-review').toggleClass('opacity-on')
     $('.review_button').toggleClass('opacity-on')
 })

@@ -391,7 +391,7 @@ input, button, textarea {
     right: 0;
 }
 
-#modal {
+.modal-hide {
     opacity: 0;
     visibility: hidden;
     transition: .5s;
@@ -430,6 +430,7 @@ input, button, textarea {
     border-radius: 20px;
     float: left;
     margin: 10px;
+    cursor:pointer;
 }
 
 .section {
