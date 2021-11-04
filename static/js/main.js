@@ -101,3 +101,13 @@ function select_userbook(clicked_id) {
     })
 }
 
+// 추천 책 삭제
+function delete_book() {
+    let img_url = $('#modal_img_url').attr("src");
+    $.ajax({
+        type: "POST", url: "/delete", data: {img_url_give: img_url}, success: function (response) {
+            alert(response["msg"]);
+            window.location.reload();
+        }
+    })
+}

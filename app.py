@@ -19,7 +19,7 @@ SECRET_KEY = '18'
 def home():
     rows = db.articles.find({}, {'id': False})
     token_receive = request.cookies.get('mytoken')
-    
+
     if token_receive:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         user_info = db.bookReview_team.find_one({"id": payload['id']})
@@ -29,13 +29,9 @@ def home():
         return render_template('index.html', rows=rows)
 
 
-
 @app.route('/login')
 def login():
     return render_template('login.html')
-
-
-
 
 
 @app.route('/bestSeller')
@@ -221,7 +217,6 @@ def get_reviews():
     print(reviews)
     return jsonify({'reviews': reviews})
 
-
 @app.route('/get_user_review', methods=['POST'])
 def get_user_review():
     title_receive = request.form['title_give']
@@ -229,12 +224,12 @@ def get_user_review():
     print(user_review)
     return jsonify({'user_review': user_review})
 
-#
-# 'reviewMemo': reviewMemo_receive,
-# 'reviewTitle': reviewTitle_receive
-# db.articles.insert_one(doc)
-
+@app.route('/delete', methods=['POST'])
+def read_reviews():
+    img_url_receive = request.form['img_url_give']
+    db.articles.delete_one({'image': img_url_receive})
+    return jsonify({'msg': '삭제완료!'})
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=3000, debug=True)
+    app.run('0.0.0.0', port=4000, debug=True)
