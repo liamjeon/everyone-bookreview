@@ -36,25 +36,23 @@ p {
     display: inline;
 }
 
-/* nav-bar */
-.nav-bar {
-    width: 100%;
-    height: 70px;
-    /*max-width: 1000px;*/
-    background-color: cornflowerblue;
-    position: fixed;
-
-    z-index: 5;
-    top: 0;
-    left: 0;
-}
-
-.nav-bar .center {
+.center {
     width: 1000px;
     height: 70px;
     display: flex;
-    margin:auto;
+    margin: auto;
     position: relative;
+}
+
+/* nav-bar */
+.nav-bar {
+    width: 100%;
+    height: 140px;
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    background-color: #eeeeee;
 }
 
 .nav-bar .center .mainPage {
@@ -67,27 +65,69 @@ p {
 }
 
 .nav-bar .center .title {
+    width: 340px;
     position: absolute;
-    margin: auto;
-    font-size: 40px;
+    font-size: 50px;
     font-weight: bold;
-    top:12px;
-    left: 110px;
+    top: 12px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-family: 'Black And White Picture', sans-serif;
 }
 
 .nav-bar .center .title > a {
     color: #eee;
+    text-align: center;
+    color: cornflowerblue;
 }
+
+.nav-bar .center .main_page {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 80px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.nav-bar .center .main_page > a {
+    margin: 10px 0;
+    padding: 0 20px;
+    font-size: 25px;
+    position: relative;
+}
+
+.nav-bar .center .main_page > a:hover {
+    text-decoration: underline;
+}
+
+.nav-bar .center .main_page > a::before {
+    content: '';
+    height: 30px;
+    border-right: 1px solid #b4b2b2;
+    position: absolute;
+    top:0;
+    left:0;
+}
+
+.nav-bar .center .main_page > a:first-child::before {
+    content: '';
+    display: none;
+}
+
 
 .nav-bar .center .main_menu {
     display: flex;
     position: absolute;
     right: 10px;
     top: 0;
-    bottom: 0;
 }
 
-.nav-bar .center .main_menu > a {
+.nav-bar .center .main_menu a {
     margin: auto;
     font-size: 15px;
     color: #444;
@@ -95,11 +135,11 @@ p {
     position: relative;
 }
 
-.nav-bar .center .main_menu > a:hover {
+.nav-bar .center .main_menu a:hover {
     text-decoration: underline;
 }
 
-.nav-bar .center .main_menu > a::before {
+.nav-bar .center .main_menu a::before {
     content: '';
     border-right: 1px solid #777;
     height: 15px;
@@ -107,13 +147,11 @@ p {
     right: 0;
 }
 
-.nav-bar .center .main_menu > a:first-child::before {
+.nav-bar .center .main_menu a:nth-child(2)::before {
     content: '';
-    border-left: 1px solid #777;
-    height: 15px;
-    position: absolute;
-    left:0;
+    display: none;
 }
+
 
 /* login form */
 .login-form {

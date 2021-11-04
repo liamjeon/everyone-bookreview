@@ -3,13 +3,15 @@ $(document).ready(function () {
 });
 
 $('.review_button').click(function () {
-    $('.review').toggleClass('hide-out');
-    $('.review_button').toggleClass('opacity')
-});
+    $('.review').toggleClass('opacity-off')
+    $('.book-review').toggleClass('opacity-on')
+    $('.review_button').toggleClass('opacity-on')
+})
 
 $('.review_close').click(function () {
-    $('.review').toggleClass('hide-out');
-    $('.review_button').toggleClass('opacity')
+    $('.review').toggleClass('opacity-off');
+    $('.book-review').toggleClass('opacity-on')
+    $('.review_button').toggleClass('opacity-on')
 })
 
 $('.upload_review').click(function () {

@@ -29,27 +29,32 @@
     <link rel="stylesheet" href="../static/css/login.css"/>
     <script defer src="../static/js/login.js"></script>
 
+    {#  google-fonts-BnW-HM  #}
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Hi+Melody&display=swap"
+          rel="stylesheet"/>
 
+    {#  favicon  #}
     <link rel="icon" href="../static/image/book_logo.png"/>
 
-    <title>책리뷰</title>
+    <title>모두의 책 리뷰</title>
 </head>
 <body>
 <div class="wrap">
     <!-- nav-bar -->
     <div class="nav-bar">
         <div class="center">
-            <a class="mainPage" href="/">
-                <img src="../static/image/book_logo.png" alt="book_logo"/>
-            </a>
-
             <div class="title">
                 <a href="/">모두의 책 리뷰</a>
             </div>
 
-            <div class="main_menu">
+            <div class="main_page">
                 <a class="bestS" href="/bestSeller">베스트셀러</a>
                 <a class="prefer" href="/">추천리스트</a>
+            </div>
+
+            <div class="main_menu">
                 <a class="sign_in" href="/login">로그인</a>
                 <a class="join_mem" href="/joinMem">회원가입</a>
             </div>

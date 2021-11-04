@@ -29,6 +29,12 @@
     <link rel="stylesheet" href="../static/css/main.css"/>
     <script defer src="../static/js/main.js"></script>
 
+    {#  google-fonts-BnW-HM  #}
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Hi+Melody&display=swap"
+          rel="stylesheet"/>
+
     {#  favicon  #}
     <link rel="icon" href="../static/image/book_logo.png"/>
 
@@ -42,25 +48,25 @@
 
     <div class="nav-bar">
         <div class="center">
-            <a class="mainPage" href="/">
-                <img src="../static/image/book_logo.png" alt="book_logo"/>
-            </a>
+
             <div class="title">
                 <a href="/">모두의 책 리뷰</a>
             </div>
-            <div class="main_menu">
+            <div class="main_page">
                 <a class="bestS" href="/bestSeller">베스트셀러</a>
                 <a class="prefer" href="/">추천리스트</a>
+            </div>
+            <div class="main_menu">
                 <a class="login_no" href="/login">로그인</a>
                 <a class="login_yes" href="javascript:void(0)">{{ user_id }}님 환영합니다.</a>
-                <a class="join_mem login_no" href="/">회원가입</a>
+                <a class="join_mem login_no" href="/joinMem">회원가입</a>
                 <a class="join_mem login_yes" href="/">로그아웃</a>
             </div>
         </div>
 
     </div>
 
-    <div class="review" autocomplete="false">
+    <div class="review">
         <input type="text" placeholder="제목" id="reviewTitle"/>
         <textarea type="text" placeholder="등록하고싶은 책의 리뷰를 작성해주세요." id="reviewMemo"></textarea>
         <input type="text" placeholder="등록하고싶은 책의 URL을 작성해주세요." id="reviewURL"/>
