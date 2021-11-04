@@ -27,7 +27,7 @@
 
     <!--  css & js -->
     <link rel="stylesheet" href="../static/css/main.css"/>
-    <script defer src="../static/js/main.js"></script>
+
     <script defer src="../static/js/bestSeller.js"></script>
 
     {#  google-fonts-BnW-HM  #}
@@ -38,6 +38,9 @@
 
     {#  favicon  #}
     <link rel="icon" href="../static/image/book_logo.png"/>
+
+    {#  material-icons  #}
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 
     <title>모두의 책 리뷰</title>
 </head>
@@ -70,7 +73,7 @@
     <div style="clear: both"></div>
 
 
-    <div id="modal" class="modal-overlay" style="display: none">
+    <div id="modal" class="modal-overlay modal-hide">
         <div class="modal-window">
             <div class="modal-float">
                 <div class="content">
@@ -108,9 +111,8 @@
                 </div>
             </div>
             <div style="clear: both"></div>
-            <div>
-                <button class="bestseller-close-btn" onclick="modal_close()">닫기</button>
-            </div>
+
+            <span class="material-icons userbook-close-btn">edit_off</span>
         </div>
 
     </div>
