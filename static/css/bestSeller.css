@@ -138,7 +138,7 @@ input::-webkit-calendar-picker-indicator {
     border-style: solid;
     border-width: 1px;
     width: 800px;
-    height: 550px;
+    height: 610px;
     padding: 10px;
 }
 
@@ -161,9 +161,10 @@ input::-webkit-calendar-picker-indicator {
     float: left;
 }
 
-#modal .btn{
+#modal .bestseller-close-btn{
     display: block;
     margin: auto;
+    margin-top: 30px;
 
     border-radius: 20px;
     background:#1AAB8A;
@@ -177,6 +178,8 @@ input::-webkit-calendar-picker-indicator {
     transition:800ms ease all;
     outline:none;
 }
+
+
 
 #modal .review{
     width: 50%;
@@ -205,7 +208,7 @@ input::-webkit-calendar-picker-indicator {
     height: 400px;
     margin-top: 20px;
     margin: auto;
-    background-color: #0000FF;
+    background-color: lightcyan;
 }
 
 .modal-review-textbox{

@@ -67,12 +67,7 @@ function check_login() {
 
 
 function select_book(clicked_id){
-    // var title = document.getElementById(clicked_id).getAttribute( 'text' );
-    // var parent = document.getElementById(clicked_id).;
-    //var img_src = parent.childNodes.getAttribute('src');
-    // $('#modal').toggleClass('is-hidden');
     document.getElementById("modal").style.display = 'block'
-
 
     let curr_Element = document.getElementById(clicked_id);
     let child_Elements = curr_Element.childNodes;
@@ -99,13 +94,9 @@ function select_book(clicked_id){
              $('#modal-reviews').empty();
 
              let reviews = response['reviews']
-
              for(let i=0; i<reviews.length; i++){
                  let user_id = reviews[i]['user_id'];
                  let review = reviews[i]['review'];
-
-                 console.log(user_id,review)
-
                  let temp_html = `
                         <div class="modal-review-textbox">
                             <td>${user_id}</td><span>: ${review}</span></td>
@@ -142,7 +133,6 @@ function send_review(){
              for(let i=0; i<reviews.length; i++){
                  let user_id = reviews[i]['user_id'];
                  let review = reviews[i]['review'];
-
                  let temp_html = `
                         <div class="modal-review-textbox">
                             <td>${user_id}</td><span>: ${review}</span></td>

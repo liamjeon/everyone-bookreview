@@ -379,3 +379,21 @@ input, button, textarea {
     width: 230px;
     height: 330px;
 }
+
+#modal .userbook-close-btn{
+    display: block;
+    margin: auto;
+    margin-top: 15px;
+
+    border-radius: 20px;
+    background:#1AAB8A;
+    color:#fff;
+    border:none;
+    border-radius: 20px;
+    height:40px;
+    font-size:1.6em;
+    padding:0 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+}

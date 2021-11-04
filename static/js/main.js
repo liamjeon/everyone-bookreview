@@ -71,6 +71,26 @@ function select_userbook(clicked_id){
 
     document.getElementById("modal_img_url").src = img_url;
     document.getElementById("modal_title").innerText = title;
+
+    $.ajax({
+        type: "POST",
+        url: "/get_user_review",
+        data: {
+            title_give: title,
+        },
+        success: function (response) {
+            let user_review = response['user_review'];
+            let review_title = user_review[0]['reviewTitle'];
+            let review_content = user_review[0]['reviewMemo'];
+            console.log(user_review)
+            console.log(review_title, review_content);
+
+            document.getElementById('review_title').innerText = review_title;
+            document.getElementById('review_content').innerText = review_content;
+        }
+    })
+
+
 }
 
 function modal_close(){

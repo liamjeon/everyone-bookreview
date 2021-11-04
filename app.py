@@ -155,7 +155,6 @@ def view():
             'reviewMemo': reviewMemo_receive,
             'reviewTitle': reviewTitle_receive
         }
-
         db.articles.insert_one(doc)
         return jsonify({'msg': '등록 완료!'})
 
@@ -220,6 +219,20 @@ def get_reviews():
     reviews = list(db.bookReview_reviews.find({"title": title_receive}, {'_id': False}))
     print(reviews)
     return jsonify({'reviews': reviews})
+
+
+@app.route('/get_user_review', methods=['POST'])
+def get_user_review():
+    title_receive = request.form['title_give']
+    user_review = list(db.articles.find({"title": title_receive}, {'_id': False}))
+    print(user_review)
+    return jsonify({'user_review': user_review})
+
+#
+# 'reviewMemo': reviewMemo_receive,
+# 'reviewTitle': reviewTitle_receive
+# db.articles.insert_one(doc)
+
 
 
 if __name__ == '__main__':

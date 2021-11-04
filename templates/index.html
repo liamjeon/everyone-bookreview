@@ -130,19 +130,20 @@
                 <div class="modal-float">
                     <div class="modal-review-container"  >
                         <div id="modal-reviews">
-                            <div class="modal-review-textbox">
-                                <td>유저이름</td>
-                                <td>리뷰안녕하세요 책 정말 잘 익었습니다</td>
+                            <div>
+                                <p id="review_title">제목</p>
+                            </div>
+                            <div>
+                                <p id="review_content">내용</p>
                             </div>
                         </div>
-                        <div style="clear: both"></div>
-                        <input type="text" id="review_text" class="modal-review-input">
-                        <button id="send_review" onclick="send_review()">작성</button>
                     </div>
                 </div>
                 <div style="clear: both"></div>
+                <div>
+                    <button class="userbook-close-btn" onclick="modal_close()">닫기</button>
+                </div>
             </div>
-            <button class="btn" onclick="modal_close()">닫기</button>
         </div>
 
 
