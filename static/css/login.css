@@ -92,6 +92,7 @@ p {
     display: flex;
     justify-content: center;
     text-align: center;
+    font-family: 'Hi Melody', cursive;
 }
 
 .nav-bar .center .main_page > a {
@@ -107,7 +108,7 @@ p {
 
 .nav-bar .center .main_page > a::before {
     content: '';
-    height: 30px;
+    height: 24px;
     border-right: 1px solid #b4b2b2;
     position: absolute;
     top:0;

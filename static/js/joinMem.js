@@ -28,12 +28,13 @@ $('#join').click(function () {
                         }
                     }
                 } else {
+                    if (id == 0) {
+                        return alert('아이디를 입력해주세요.')
+                    }
                     return alert('아이디의 형식을 확인해주세요. 영문과 숫자, 일부 특수문자(._-) 사용 가능. 2-20자 길이'),
                         window.location.replace('/joinMem')
                 }
-                if (id == 0) {
-                    return alert('아이디를 입력해주세요.')
-                } else if (pw == 0) {
+                if (pw == 0) {
                     return alert('비밀번호를 입력해주세요.')
                 } else if (pw_chk == 0) {
                     return alert('비밀번호 확인칸을 입력해주세요.')
@@ -142,7 +143,7 @@ $('#user_pw_chk').keyup(function () {
         $('#wrongPw').text('- 비밀번호를 입력해주세요 ')
         $('#wrongPw').css('color', '#fed')
     }
-    if ((pw !== pw_chk) && (pw_chk != 0) ) {
+    if ((pw !== pw_chk) && (pw_chk != 0)) {
         $('#wrongPw').text('- 비밀번호가 일치하지 않습니다.')
         $('#wrongPw').css('color', 'red')
     }

@@ -292,6 +292,7 @@ input, button, textarea {
     border-radius: 10%;
     font-family: 'Hi Melody', cursive;
     font-size:20px;
+    cursor: default;
 }
 
 .book-review .book-review-contents {
