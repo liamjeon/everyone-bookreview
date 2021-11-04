@@ -597,36 +597,43 @@ input, button, textarea {
     width: 428px;
     height: 40px;
     margin:5px;
-    border: 1px solid #1AAB8A;
+    border: 3px solid #1AABBA;
     border-right: 0;
+    border-radius: 3px;
     box-sizing: border-box;
     transition: .2s;
+    outline: none;
 }
 
-.modal-review-input:focus {
-    border-radius: 3px;
-    outline: 3px solid #1AABBA;
-}
 .modal-review-input::placeholder {
-    color: #1AAB8A;
+    color: #1AABBA;
     padding-left: 10px;
 }
 
 #send_review {
     background-color: #1AABBA;
     position: relative;
-    right:-433px;
+    right:-431px;
     top: -45px;
-    border: 1px solid #1AAB8A;
+    border: 3px solid #1AABBA;
     border-left: 0;
     height: 40px;
     box-sizing: border-box;
     font-weight: bold;
     cursor: pointer;
+    transition: .5s;
+    color: #fff;
+}
+
+#send_review:hover {
+    background-color: #016f7c;
+    border: 3px solid #016f7c;
+    border-left: 0;
+    color: #f39595;
 }
 
 .modal-review-textbox {
-    width: 100%;
+    width: 480px;
     color: black;
     background-color: white;
     border-width: 1;
@@ -637,3 +644,28 @@ input, button, textarea {
     margin-bottom: 10px;
 }
 
+.modal-review-textbox > span {
+    font-family: 'Hi Melody', cursive;
+    font-size: 24px;
+}
+
+.delete_button {
+    display: table-cell;
+    position: absolute;
+    top: 2px;
+    right: 45px;
+    height: 35px;
+    cursor: pointer;
+    background-color: lightcyan;
+    border-radius: 10%;
+    transition: .5s;
+    vertical-align: middle;
+    line-height: 1.8;
+    font-size: 20px;
+    font-family: 'Black And White Picture', sans-serif;
+}
+
+.delete_button:hover {
+    background-color: #9fc4be;
+    transform: scale(1.1);
+}
