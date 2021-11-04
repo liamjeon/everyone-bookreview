@@ -7,6 +7,11 @@ $(document).ready(function () {
     check_login();
 });
 
+function input_bookreview(clicked_id){
+    let title = document.getElementById("modal_title").innerHTML;
+}
+
+
 function select_book(clicked_id) {
     $('#modal').toggleClass('is-hidden');
 
@@ -35,9 +40,10 @@ function show_bestseller() {
 
                 let temp_html = `<div onclick="select_book(this.id)" id="book${i}" class="book-box">
                                     <img src="${img_url}" >
-                                    <p>${title}<span> /저자:${author}</span></p>
-                                    <p>${publisher}<span>/${publish_date} 출간</span></p>
-                                    
+                                    <p>${title}<p>
+                                    <p>${author}</p>
+                                    <p>${publisher}</p>
+                                    <p>${publish_date}</p>
                                  </div>`;
                 $('#books').append(temp_html);
             }
@@ -58,3 +64,95 @@ function check_login() {
         $('.login_yes').addClass("hidden");
     }
 }
+
+
+function select_book(clicked_id){
+    // var title = document.getElementById(clicked_id).getAttribute( 'text' );
+    // var parent = document.getElementById(clicked_id).;
+    //var img_src = parent.childNodes.getAttribute('src');
+    // $('#modal').toggleClass('is-hidden');
+    document.getElementById("modal").style.display = 'block'
+
+
+    let curr_Element = document.getElementById(clicked_id);
+    let child_Elements = curr_Element.childNodes;
+
+    let img_url = child_Elements[1]['src'];
+    let title = child_Elements[3].innerHTML;
+    let author = child_Elements[5].innerHTML;
+    let publisher = child_Elements[7].innerHTML;
+    let publish_date = child_Elements[9].innerHTML;
+
+    document.getElementById("modal_img_url").src = img_url;
+    document.getElementById("modal_title").innerHTML = title;
+    document.getElementById("modal_author").innerHTML = author;
+    document.getElementById("modal_publisher").innerHTML = publisher;
+    document.getElementById("modal_publishdate").innerHTML = publish_date;
+
+     $.ajax({
+         type: 'POST',
+         url: '/get_reviews',
+         data: {
+             title_give: title,
+         },
+         success: function (response) {
+             $('#modal-reviews').empty();
+
+             let reviews = response['reviews']
+
+             for(let i=0; i<reviews.length; i++){
+                 let user_id = reviews[i]['user_id'];
+                 let review = reviews[i]['review'];
+
+                 console.log(user_id,review)
+
+                 let temp_html = `
+                        <div class="modal-review-textbox">
+                            <td>${user_id}</td><span>: ${review}</span></td>
+                        </div>
+                 `;
+                 $('#modal-reviews').append(temp_html);
+             }
+         }
+     })
+}
+
+function modal_close(){
+    document.getElementById("modal").style.display = 'none'
+}
+
+function send_review(){
+    let login_id = document.getElementById("login_id").childNodes[0]['nodeValue'];
+    let review_text = document.getElementById("review_text").value;
+    let title = document.getElementById("modal_title").innerText;
+    document.getElementById("review_text").value='';
+
+     $.ajax({
+         type: 'POST',
+         url: '/send_review',
+         data: {
+             id_give: login_id,
+             title_give: title, //책 구별 변수
+             review_give: review_text,
+         },
+         success: function (response) {
+             $('#modal-reviews').empty();
+             let reviews = response['reviews']
+
+             for(let i=0; i<reviews.length; i++){
+                 let user_id = reviews[i]['user_id'];
+                 let review = reviews[i]['review'];
+
+                 let temp_html = `
+                        <div class="modal-review-textbox">
+                            <td>${user_id}</td><span>: ${review}</span></td>
+                        </div>
+                 `;
+                 $('#modal-reviews').append(temp_html);
+             }
+         }
+     })
+}
+
+
+
