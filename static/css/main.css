@@ -590,6 +590,39 @@ input, button, textarea {
     position: absolute;
     top: 40px;
     right: 0;
+    overflow: scroll;
+}
+
+.modal-review-input {
+    width: 428px;
+    height: 40px;
+    margin:5px;
+    border: 1px solid #1AAB8A;
+    border-right: 0;
+    box-sizing: border-box;
+    transition: .2s;
+}
+
+.modal-review-input:focus {
+    border-radius: 3px;
+    outline: 3px solid #1AABBA;
+}
+.modal-review-input::placeholder {
+    color: #1AAB8A;
+    padding-left: 10px;
+}
+
+#send_review {
+    background-color: #1AABBA;
+    position: relative;
+    right:-433px;
+    top: -45px;
+    border: 1px solid #1AAB8A;
+    border-left: 0;
+    height: 40px;
+    box-sizing: border-box;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .modal-review-textbox {
