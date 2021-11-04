@@ -1,28 +1,28 @@
-// <script>
-//     <link rel="stylesheet" href="../static/css/bestSeller.css"/>
-// </script>
-
 $(document).ready(function () {
     show_bestseller();
     check_login();
 });
 
+$('.userbook-close-btn').click(function () {
+    $('.modal-hide').toggleClass('opacity-off')
+    $('.book-box-bg').toggleClass('opacity-on')
+})
+
 function input_bookreview(clicked_id){
     let title = document.getElementById("modal_title").innerHTML;
 }
 
-
-function select_book(clicked_id) {
-    $('#modal').toggleClass('is-hidden');
-
-    let curr_Element = document.getElementById(clicked_id);
-    let child_Elements = curr_Element.childNodes;
-
-    let title = child_Elements[3].innerHTML;
-    let img_url = child_Elements[1]['src'];
-
-    document.getElementById("modal_img_url").src = img_url;
-}
+// function select_book(clicked_id) {
+//     // $('#modal').toggleClass('is-hidden');
+//
+//     let curr_Element = document.getElementById(clicked_id);
+//     let child_Elements = curr_Element.childNodes;
+//
+//     let title = child_Elements[3].innerHTML;
+//     let img_url = child_Elements[1]['src'];
+//
+//     document.getElementById("modal_img_url").src = img_url;
+// }
 
 function show_bestseller() {
     $.ajax({
@@ -67,7 +67,8 @@ function check_login() {
 
 
 function select_book(clicked_id){
-    document.getElementById("modal").style.display = 'block'
+    $('#modal').toggleClass('opacity-off')
+    $('.book-box-bg').toggleClass('opacity-on')
 
     let curr_Element = document.getElementById(clicked_id);
     let child_Elements = curr_Element.childNodes;

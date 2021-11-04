@@ -56,6 +56,7 @@ input, button, textarea {
 
 .opacity-on {
     opacity: .4;
+    pointer-events: none;
 }
 
 .opacity-off {
@@ -214,7 +215,7 @@ input, button, textarea {
     border-radius: 3px;
 }
 
-#reviewTitle::placeholder, #reviewMemo::placeholder, #reviewURL::placeholder{
+#reviewTitle::placeholder, #reviewMemo::placeholder, #reviewURL::placeholder {
     color: #444;
     font-weight: bold;
     padding-top: 150px;
@@ -261,6 +262,7 @@ input, button, textarea {
     font-size: 24px;
     font-family: 'Hi Melody', cursive;
 }
+
 .review_button:hover {
     transform: scale(1.4);
 }
@@ -291,7 +293,7 @@ input, button, textarea {
     line-height: 1.5;
     border-radius: 10%;
     font-family: 'Hi Melody', cursive;
-    font-size:20px;
+    font-size: 20px;
     cursor: default;
 }
 
@@ -376,25 +378,294 @@ input, button, textarea {
     border: 0;
 }
 
-.modal-image{
+.modal-image {
     width: 230px;
     height: 330px;
 }
 
-#modal .userbook-close-btn{
+#modal .userbook-close-btn {
+    display: block;
+    cursor: pointer;
+    font-size: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.modal-hide {
+    opacity: 0;
+    visibility: hidden;
+    transition: .5s;
+}
+
+/*.container {*/
+/*    width: 80%;*/
+/*    margin-top: 140px;*/
+/*    padding-left: 100px;*/
+/*}*/
+
+.title {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.book-box-bg {
+    width: 1200px;
+    text-align: center;
+    display: block;
+    margin: 150px auto;
+    padding: 100px 0;
+    transition: .5s;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-left: 1px solid cornflowerblue;
+    border-right: 1px solid cornflowerblue;
+    border-radius: 10%;
+}
+
+.book-box-bg .book-box-info {
+    position: absolute;
+    top: -8px;
+    left: 0;
+    right: 0;
+    font-size: 80px;
+    font-family: 'Hi Melody', cursive;
+    background: linear-gradient(to right, white 0%, cornflowerblue 50%, white 100%);
+    text-shadow: 6px 6px 6px gray;
+    color: #eee;
+    transform: scale(0.8);
+}
+
+.book-box {
+    width: 240px;
+    height: 320px;
+    text-align: center;
+    display: block;
+    border: 1px solid #999;
+    border-radius: 10%;
+    float: left;
+    margin: 50px 28px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.book-box:hover{
+    transform: scale(1.1);
+}
+
+.book-box > img {
+    width: 180px;
+    height: 240px;
+}
+
+.section {
+    padding: 1rem 1.5rem;
+    max-width: 750px;
+    margin: auto;
+}
+
+.is-sparta {
+    color: #0000FF !important;
+}
+
+.button.is-sparta {
+    background-color: #148CFF;
+    border-color: transparent;
+    color: #fff !important;
+}
+
+.button.is-sparta.is-outlined {
+    background-color: transparent;
+    border-color: #148CFF;
+    color: #148CFF !important;
+}
+
+.modal-content {
+    width: 600px;
+    max-width: 80%;
+}
+
+.image img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.btn-addbook {
+    width: 20%;
+    height: 80px;
+    position: fixed;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+}
+
+.modal-text-margin {
+    margin: 10px;
+}
+
+#modal.modal-overlay {
+    position: fixed;
+    top: 200px;
+    margin: auto;
+}
+
+#modal .modal-window {
+    background-color: snow;
+    border-radius: 20px;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    width: 1000px;
+    height: 610px;
+    padding: 10px;
+    position: relative;
+}
+
+#modal .title {
+    font-size: 30px;
+    color: black;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+#modal .content {
+    margin: auto;
+    /*margin-top: 20px;*/
+    padding: 0px 10px;
+    text-shadow: 1px 1px 2px gray;
+    color: black;
+    text-align: center;
+    float: left;
+    position: absolute;
+    top: 50px;
+}
+
+#modal .bestseller-close-btn {
     display: block;
     margin: auto;
-    margin-top: 15px;
+    margin-top: 30px;
 
     border-radius: 20px;
-    background:#1AAB8A;
-    color:#fff;
-    border:none;
+    background: #1AAB8A;
+    color: #fff;
+    border: none;
     border-radius: 20px;
-    height:40px;
-    font-size:1.6em;
-    padding:0 2em;
-    cursor:pointer;
-    transition:800ms ease all;
-    outline:none;
+    height: 40px;
+    font-size: 1.6em;
+    padding: 0 2em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+}
+
+#modal .review {
+    width: 50%;
+    height: 500px;
+    background-color: blueviolet;
+
+    float: left;
+}
+
+.hidden {
+    display: none;
+}
+
+.modal-float {
+    float: left;
+    width: 50%;
+    margin: auto;
+    padding-left: 50px;
+}
+
+.modal-review-container {
+    width: 48%;
+    height: 90%;
+    background-color: lightcyan;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    overflow: scroll;
+}
+
+.modal-review-input {
+    width: 428px;
+    height: 40px;
+    margin:5px;
+    border: 3px solid #1AABBA;
+    border-right: 0;
+    border-radius: 3px;
+    box-sizing: border-box;
+    transition: .2s;
+    outline: none;
+}
+
+.modal-review-input::placeholder {
+    color: #1AABBA;
+    padding-left: 10px;
+}
+
+#send_review {
+    background-color: #1AABBA;
+    position: relative;
+    right:-431px;
+    top: -45px;
+    border: 3px solid #1AABBA;
+    border-left: 0;
+    height: 40px;
+    box-sizing: border-box;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .5s;
+    color: #fff;
+}
+
+#send_review:hover {
+    background-color: #016f7c;
+    border: 3px solid #016f7c;
+    border-left: 0;
+    color: #f39595;
+}
+
+.modal-review-textbox {
+    width: 480px;
+    color: black;
+    background-color: white;
+    border-width: 1;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.modal-review-textbox > span {
+    font-family: 'Hi Melody', cursive;
+    font-size: 24px;
+}
+
+.delete_button {
+    display: table-cell;
+    position: absolute;
+    top: 2px;
+    right: 45px;
+    height: 35px;
+    cursor: pointer;
+    background-color: lightcyan;
+    border-radius: 10%;
+    transition: .5s;
+    vertical-align: middle;
+    line-height: 1.8;
+    font-size: 20px;
+    font-family: 'Black And White Picture', sans-serif;
+}
+
+.delete_button:hover {
+    background-color: #9fc4be;
+    transform: scale(1.1);
 }

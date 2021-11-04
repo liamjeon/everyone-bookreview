@@ -26,7 +26,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
     <!--  css & js -->
-    <link rel="stylesheet" href="../static/css/bestSeller.css"/>
     <link rel="stylesheet" href="../static/css/main.css"/>
 
     <script defer src="../static/js/main.js"></script>
@@ -92,7 +91,7 @@
                 {% set url = row['url'] %}
                 {% set reviewMemo = row['reviewMemo'] %}
                 {% set reviewTitle = row['reviewTitle'] %}
-                <div class="userSelect" id="book{{loop.index}}" onclick="select_userbook(this.id)">
+                <div class="userSelect" id="book{{ loop.index }}" onclick="select_userbook(this.id)">
                     <img class="book_img" src="{{ image }}"/>
                     <div class="book_title">{{ title }}</div>
                     <hr>
@@ -100,56 +99,49 @@
                 </div>
             {% endfor %}
         </div>
+    </div>
 
-
-
-        <div id="modal" class="modal-overlay" style="display: none">
-            <div class="modal-window">
-                <div class="modal-float">
-                    <div class="content">
-                        <div class="title">
-                            <h4 id="modal_title">책이름</h4>
-                        </div>
-                        <div>
-                            <img id="modal_img_url" class="modal-image" src="">
-                            <div class="modal-bookinfo">
-                                <p id="modal_author" class="modal-text-margin">저자</p>
-                                <p id="modal_publisher" class="modal-text-margin">출판사</p>
-                                <p id="modal_publishdate" class="modal-text-margin">출간일</p>
-                            </div>
-                        </div>
+    <div id="modal" class="modal-overlay modal-hide">
+        <div class="modal-window">
+            <div class="modal-float">
+                <div class="content">
+                    <div class="title">
+                        <h4 id="modal_title">책이름</h4>
                     </div>
-                    <div class="review">
-                        <div>
-                            <div>유저이름</div>
-                            <div>리뷰내용</div>
-                            <input id="reviews" class="input" type="text">
+                    <div>
+                        <img id="modal_img_url" class="modal-image" src="">
+                        <div class="modal-bookinfo">
+                            <p id="modal_author" class="modal-text-margin">저자</p>
+                            <p id="modal_publisher" class="modal-text-margin">출판사</p>
+                            <p id="modal_publishdate" class="modal-text-margin">출간일</p>
                         </div>
                     </div>
                 </div>
-                <div class="modal-float">
-                    <div class="modal-review-container"  >
-                        <div id="modal-reviews">
-                            <div>
-                                <p id="review_title">제목</p>
-                            </div>
-                            <div>
-                                <p id="review_content">내용</p>
-                            </div>
-                        </div>
+                <div class="review">
+                    <div>
+                        <div>유저이름</div>
+                        <div>리뷰내용</div>
+                        <input id="reviews" class="input" type="text">
                     </div>
-                </div>
-                <div style="clear: both"></div>
-                <div>
-                    <button class="userbook-close-btn" onclick="modal_close()">닫기</button>
                 </div>
             </div>
+            <div class="modal-float">
+                <div class="modal-review-container">
+                    <div id="modal-reviews">
+                        <div>
+                            <p id="review_title">제목</p>
+                        </div>
+                        <div>
+                            <p id="review_content">내용</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="delete_button" onclick="delete_book()">책 삭제하기</div>
+            <div style="clear: both"></div>
+
+            <span class="material-icons userbook-close-btn">edit_off</span>
         </div>
-
-
-
-
-
     </div>
 </div>
 

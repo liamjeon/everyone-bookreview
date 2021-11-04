@@ -9,12 +9,22 @@ $('.review_button').click(function () {
 })
 
 $('.review_close').click(function () {
-    $('.review').toggleClass('opacity-off');
+    $('.review').toggleClass('opacity-off')
     $('.book-review').toggleClass('opacity-on')
     $('.review_button').toggleClass('opacity-on')
 })
 
+$('.userSelect').click(function () {
+    $('.modal-hide').toggleClass('opacity-off')
+    $('.book-review').toggleClass('opacity-on')
+    $('.review_button').toggleClass('opacity-on')
+})
 
+$('.userbook-close-btn').click(function () {
+    $('.modal-hide').toggleClass('opacity-off')
+    $('.book-review').toggleClass('opacity-on')
+    $('.review_button').toggleClass('opacity-on')
+})
 
 $('.upload_review').click(function () {
     let url = $('#reviewURL').val()
@@ -58,7 +68,7 @@ function check_login() {
     }
 }
 
-function select_userbook(clicked_id){
+function select_userbook(clicked_id) {
     document.getElementById("modal").style.display = 'block';
 
     let curr_Element = document.getElementById(clicked_id);
@@ -89,10 +99,15 @@ function select_userbook(clicked_id){
             document.getElementById('review_content').innerText = review_content;
         }
     })
-
-
 }
 
-function modal_close(){
-     document.getElementById("modal").style.display = 'none';
+// 추천 책 삭제
+function delete_book() {
+    let img_url = $('#modal_img_url').attr("src");
+    $.ajax({
+        type: "POST", url: "/delete", data: {img_url_give: img_url}, success: function (response) {
+            alert(response["msg"]);
+            window.location.reload();
+        }
+    })
 }
