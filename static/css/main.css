@@ -215,7 +215,7 @@ input, button, textarea {
     border-radius: 3px;
 }
 
-#reviewTitle::placeholder, #reviewMemo::placeholder, #reviewURL::placeholder{
+#reviewTitle::placeholder, #reviewMemo::placeholder, #reviewURL::placeholder {
     color: #444;
     font-weight: bold;
     padding-top: 150px;
@@ -262,6 +262,7 @@ input, button, textarea {
     font-size: 24px;
     font-family: 'Hi Melody', cursive;
 }
+
 .review_button:hover {
     transform: scale(1.4);
 }
@@ -292,7 +293,7 @@ input, button, textarea {
     line-height: 1.5;
     border-radius: 10%;
     font-family: 'Hi Melody', cursive;
-    font-size:20px;
+    font-size: 20px;
     cursor: default;
 }
 
@@ -377,17 +378,17 @@ input, button, textarea {
     border: 0;
 }
 
-.modal-image{
+.modal-image {
     width: 230px;
     height: 330px;
 }
 
-#modal .userbook-close-btn{
+#modal .userbook-close-btn {
     display: block;
-    cursor:pointer;
+    cursor: pointer;
     font-size: 40px;
     position: absolute;
-    top:0;
+    top: 0;
     right: 0;
 }
 
@@ -397,18 +398,18 @@ input, button, textarea {
     transition: .5s;
 }
 
-.container{
+.container {
     width: 80%;
     margin-top: 140px;
     padding-left: 100px;
 }
 
-.title{
+.title {
     text-align: center;
     margin-top: 10px;
 }
 
-.book-box-bg{
+.book-box-bg {
     width: 100%;
     background-color: blueviolet;
     text-align: center;
@@ -419,7 +420,7 @@ input, button, textarea {
     margin-right: auto;
 }
 
-.book-box{
+.book-box {
     width: 20%;
     height: 400px;
     text-align: center;
@@ -430,7 +431,7 @@ input, button, textarea {
     border-radius: 20px;
     float: left;
     margin: 10px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .section {
@@ -461,30 +462,29 @@ input, button, textarea {
 }
 
 .image img {
-    object-fit:cover;
-    width:100%;
-    height:100%;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
-.btn-addbook{
+.btn-addbook {
     width: 20%;
     height: 80px;
-    position:fixed;
-    margin:0 auto;
+    position: fixed;
+    margin: 0 auto;
     left: 0;
     right: 0;
     bottom: 20px;
 }
 
-.modal-text-margin{
+.modal-text-margin {
     margin: 10px;
 }
 
 #modal.modal-overlay {
     position: fixed;
-    left: 29%;
-    top: 17%;
-    border-radius: 10px;
+    bottom: 0;
+    margin: auto;
 }
 
 #modal .modal-window {
@@ -493,9 +493,10 @@ input, button, textarea {
     border-color: black;
     border-style: solid;
     border-width: 1px;
-    width: 800px;
+    width: 1000px;
     height: 610px;
     padding: 10px;
+    position: relative;
 }
 
 #modal .title {
@@ -516,22 +517,22 @@ input, button, textarea {
     float: left;
 }
 
-#modal .bestseller-close-btn{
+#modal .bestseller-close-btn {
     display: block;
     margin: auto;
     margin-top: 30px;
 
     border-radius: 20px;
-    background:#1AAB8A;
-    color:#fff;
-    border:none;
+    background: #1AAB8A;
+    color: #fff;
+    border: none;
     border-radius: 20px;
-    height:40px;
-    font-size:1.6em;
-    padding:0 2em;
-    cursor:pointer;
-    transition:800ms ease all;
-    outline:none;
+    height: 40px;
+    font-size: 1.6em;
+    padding: 0 2em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
 }
 
 #modal .review {
@@ -546,21 +547,22 @@ input, button, textarea {
     display: none;
 }
 
-.modal-float{
+.modal-float {
     float: left;
     width: 50%;
     margin: auto;
     padding-left: 50px;
 }
-.modal-review-container{
-    width: 100%;
+
+.modal-review-container {
+    width: 45%;
     height: 400px;
-    margin-top: 20px;
-    margin: auto;
     background-color: lightcyan;
+    position: absolute;
+    top: 0;
 }
 
-.modal-review-textbox{
+.modal-review-textbox {
     width: 100%;
     color: black;
     background-color: white;
