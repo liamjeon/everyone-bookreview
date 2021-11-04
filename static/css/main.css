@@ -398,11 +398,11 @@ input, button, textarea {
     transition: .5s;
 }
 
-.container {
-    width: 80%;
-    margin-top: 140px;
-    padding-left: 100px;
-}
+/*.container {*/
+/*    width: 80%;*/
+/*    margin-top: 140px;*/
+/*    padding-left: 100px;*/
+/*}*/
 
 .title {
     text-align: center;
@@ -410,19 +410,24 @@ input, button, textarea {
 }
 
 .book-box-bg {
-    width: 100%;
-    background-color: blueviolet;
+    width: 1200px;
     text-align: center;
-    padding-left: 50px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 150px auto;
+    padding: 100px 0;
     transition: .5s;
+    justify-content: center;
+    position: absolute;
+    left:0;
+    right: 0;
+    border-left: 1px solid cornflowerblue;
+    border-right: 1px solid cornflowerblue;
+    border-radius: 10%;
 }
 
 .book-box {
-    width: 20%;
-    height: 400px;
+    width: 180px;
+    height: 270px;
     text-align: center;
     display: block;
     padding: 20px;
@@ -557,7 +562,7 @@ input, button, textarea {
 }
 
 .modal-review-container {
-    width: 53%;
+    width: 48%;
     height: 90%;
     background-color: lightcyan;
     position: absolute;
