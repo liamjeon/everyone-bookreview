@@ -68,6 +68,8 @@ input, button, textarea {
     opacity: 1 !important;
 }
 
+
+
 /* nav-bar */
 .nav-bar {
     width: 100%;
@@ -76,16 +78,30 @@ input, button, textarea {
     z-index: 5;
     top: 0;
     left: 0;
-    background-color: #eeeeee;
+    background: linear-gradient(to right, white 0%, #eee 50%, white 100%);
 }
 
 .nav-bar .center .mainPage {
     width: 50px;
 }
 
-.nav-bar .center .mainPage > img {
-    width: 100px;
-    height: 100%;
+.nav-bar .center .logo_img1 img {
+    height: 140px;
+    position: absolute;
+    left: 0;
+    right: 400px;
+    opacity: .7;
+    margin:auto;
+}
+
+.nav-bar .center .logo_img2 img {
+    height: 140px;
+    position: absolute;
+    left: 420px;
+    right: 0;
+    opacity: .4;
+    margin:auto;
+    transform: scale(1.5);
 }
 
 .nav-bar .center .title {
@@ -654,7 +670,7 @@ input, button, textarea {
     display: table-cell;
     position: absolute;
     top: 2px;
-    right: 45px;
+    right: 60px;
     height: 35px;
     cursor: pointer;
     background-color: lightcyan;
