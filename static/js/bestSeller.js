@@ -101,7 +101,7 @@ function select_book(clicked_id){
                  let comment_key = reviews[i]['comment_key'];
                  let temp_html = `
                         <div class="modal-review-textbox">
-                            <td>${user_id}</td><span>: ${review}</span><span id="id-comment">${comment_key}</span><button onclick="delete_comment()">삭제</button></td>
+                            <td>${user_id}</td><span>: ${review}</span><span id="id-comment${i}" style="visibility:hidden;">${comment_key}</span><button class="delete_button_comment" id="id-comment${i}" onclick="delete_comment(this.id)">삭제</button></td>
                         </div>
                  `;
                  $('#modal-reviews').append(temp_html);
@@ -138,7 +138,7 @@ function send_review(){
                  let comment_key = reviews[i]['comment_key']
                  let temp_html = `
                         <div class="modal-review-textbox">
-                            <td>${user_id}</td><span>: ${review}</span><span>${comment_key}</span></td>
+                            <td>${user_id}</td><span>: ${review}</span><span id="id-comment${i}" style="visibility:hidden;">${comment_key}</span><button class="delete_button_comment" id="id-comment${i}" onclick="delete_comment(this.id)">삭제</button></td>
                         </div>
                  `;
                  $('#modal-reviews').append(temp_html);
@@ -148,20 +148,23 @@ function send_review(){
 }
 
 // 추천 책 삭제
-function delete_comment() {
+function delete_comment(id) {
 
-    // let comment_key = $('#id-comment').text();
-    let comment_key = document.getElementById("#id-comment").innerText
+    console.log(id);
+    let comment_key = $('#'+ id ).text();
+    // let comment_key = $(`${id}`).val();
+    // let comment_key = $(`${id}`).attr('span')
+    // let comment_key = $('#id-comment').attr('span')
     console.log(comment_key)
 
-    // $.ajax({
-    //     type: "POST",
-    //     url: "/delete_comment",
-    //     data: {
-    //         comment_key_give: comment_key
-    //     }, success: function (response) {
-    //         alert(response["msg"]);
-    //         window.location.reload();
-    //     }
-    // })
+    $.ajax({
+        type: "POST",
+        url: "/delete_comment",
+        data: {
+            comment_key_give: comment_key
+        }, success: function (response) {
+            alert(response["msg"]);
+            window.location.reload();
+        }
+    })
 }
