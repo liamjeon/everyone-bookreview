@@ -210,7 +210,7 @@ input, button, textarea {
     margin: auto;
     left: 0;
     right: 0;
-    top: 250px;
+    top: 170px;
     transition: .5s;
     visibility: hidden;
     opacity: 0;
@@ -527,7 +527,7 @@ input, button, textarea {
 
 #modal.modal-overlay {
     position: fixed;
-    top: 200px;
+    top: 150px;
     margin: auto;
 }
 
