@@ -237,7 +237,7 @@ def delete_reviews():
 @app.route('/delete_comment', methods=['POST'])
 def delete_comment():
     comment_key_receive = request.form['comment_key_give']
-    db.bookReview_reviews.delete_one({'comment_key': comment_key_receive})
+    db.bookReview_reviews.remove({'comment_key': comment_key_receive})
     return jsonify({'msg': '삭제완료!'})
 
 

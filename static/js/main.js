@@ -24,15 +24,40 @@ $('.upload_review').click(function () {
     let url = $('#reviewURL').val()
     let reviewMemo = $('#reviewMemo').val()
     let reviewTitle = $('#reviewTitle').val()
-    $.ajax({
-        type: "POST",
-        url: "/viewList",
-        data: {url_give: url, reviewMemo_give: reviewMemo, reviewTitle_give: reviewTitle},
-        success: function (response) {
-            alert(response["msg"]);
-            window.location.reload();
-        }
-    })
+
+    if (url == 0) {
+        swal({
+            title: 'url을 입력해주세요.',
+            icon: 'error',
+            buttons: false,
+            timer: 1000
+        })
+    } else {
+        swal({
+            title: '등록중입니다. 잠시만 기다려주세요.',
+            icon: 'info',
+            buttons: false,
+            timer: 1500,
+        }).then(function () {
+            $.ajax({
+                type: "POST",
+                url: "/viewList",
+                data: {url_give: url, reviewMemo_give: reviewMemo, reviewTitle_give: reviewTitle},
+                success: function (response) {
+                    swal({
+                        title: '등록되었습니다!',
+                        text: '소중한 리뷰를 남겨주셔서 감사합니다.',
+                        icon: 'success',
+                        button: '확인'
+                    }).then(function () {
+                        window.location.reload();
+                    })
+                }
+            })
+        })
+    }
+
+
 })
 
 $('.userSelect').click(function () {
@@ -61,17 +86,21 @@ function check_login() {
             $('.review').toggleClass('opacity-off')
             $('.book-review').toggleClass('opacity-on')
             $('.review_button').toggleClass('opacity-on')
+            swal({
+                title: '꼭 참고해주세요!',
+                text: '등록하실 책은 교보문고에서 상세 URL을 가져와주세요.',
+                button: '확인',
+                icon: 'info'
+            })
         })
-
     } else {
-
         $('.login_no').removeClass("hidden");
         $('.login_yes').addClass("hidden");
         $('.review_button').click(function () {
-
             swal({
                 title: '로그인을 해주세요.',
                 icon: 'info',
+                button: '확인'
             })
         })
     }
@@ -121,10 +150,22 @@ function select_userbook(clicked_id) {
 // 추천 책 삭제
 function delete_book() {
     let img_url = $('#modal_img_url').attr("src");
-    $.ajax({
-        type: "POST", url: "/delete", data: {img_url_give: img_url}, success: function (response) {
-            alert(response["msg"]);
-            window.location.reload();
+    swal({
+        dangerMode: true,
+        title: '정말 삭제하시겠습니까?',
+        icon: 'warning',
+        buttons: ['취소', '삭제']
+    }).then(function (value) {
+            if (value) {
+                $.ajax({
+                    type: "POST", url: "/delete", data: {img_url_give: img_url}, success: function (response) {
+                        swal({})
+                        window.location.reload();
+                    }
+                })
+            } else {
+                $('.swal-modal').close();
+            }
         }
-    })
+    )
 }
