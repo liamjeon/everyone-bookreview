@@ -56,12 +56,14 @@ $('.join_mem').click(function () {
     $.removeCookie('mytoken', {path: '/'}); // = > true
 })
 
+// 로그인 상태 유무에 따른 상황
 function check_login() {
     let value = $.cookie('mytoken');
 
     if (value) {
         $('.login_no').addClass("hidden");
         $('.login_yes').removeClass("hidden");
+
     } else {
         $('.login_no').removeClass("hidden");
         $('.login_yes').addClass("hidden");
