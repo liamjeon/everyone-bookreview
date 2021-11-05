@@ -3,6 +3,12 @@ $(document).ready(function () {
     check_login();
 });
 
+//로그아웃 기능
+$('.join_mem').click(function () {
+    $.removeCookie('mytoken', {path: '/'}); // = > true
+})
+
+
 $('.userbook-close-btn').click(function () {
     $('.modal-hide').toggleClass('opacity-off')
     $('.book-box-bg').toggleClass('opacity-on')
@@ -62,6 +68,8 @@ function check_login() {
     } else {
         $('.login_no').removeClass("hidden");
         $('.login_yes').addClass("hidden");
+        $('#review_text').addClass('opacity-on');
+        $('#send_review').addClass('opacity-on');
     }
 }
 

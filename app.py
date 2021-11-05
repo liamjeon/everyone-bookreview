@@ -12,7 +12,7 @@ from pymongo import MongoClient
 
 # client = MongoClient('mongodb://test:test@localhost', 27017)
 client = MongoClient('localhost', 27017)
-db = client.dbbookreview
+db = client.dbbook
 
 SECRET_KEY = '18'
 
@@ -242,4 +242,4 @@ def delete_comment():
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=3000, debug=True)
+    app.run('0.0.0.0', port=8000, debug=True)
