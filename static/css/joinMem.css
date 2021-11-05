@@ -99,23 +99,24 @@ p {
     margin: 10px 0;
     padding: 0 20px;
     font-size: 25px;
+    transition: .2s;
     position: relative;
 }
 
 .nav-bar .center .main_page > a:hover {
-    text-decoration: underline;
+    transform: scale(1.1)
 }
 
 .nav-bar .center .main_page > a::before {
     content: '';
-    height: 30px;
+    height: 24px;
     border-right: 1px solid #b4b2b2;
-    position: absolute;
-    top:0;
-    left:0;
+    position: relative;
+    top: 0;
+    left: 0;
 }
 
-.nav-bar .center .main_page > a:first-child::before {
+.nav-bar .center .main_page > a:first-child::before, .nav-bar .center .main_page > a:last-child::before {
     content: '';
     display: none;
 }
@@ -169,8 +170,9 @@ p {
     text-align: center;
     padding: 30px 0 35px 0;
     color: #fed;
-    font-size: 25px;
+    font-size: 33px;
     border-bottom: 1px solid #fed;
+    font-family: 'Hi Melody', cursive;
 }
 
 .join-form #wrongId, #wrongPw {
