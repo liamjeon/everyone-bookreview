@@ -24,25 +24,24 @@ $('#join').click(function () {
                 if (id_regEx) {
                     for (let i = 0; i < bookReview.length; i++) {
                         if (id === bookReview[i]['id']) {
-                            return alert('이미 존재하는 아이디입니다.')
-                                // , window.location.replace('/joinMem')
+                            return swal('이미 존재하는 아이디입니다.')
                         }
                     }
                 } else {
                     if (id == 0) {
-                        return alert('아이디를 입력해주세요.')
+                        return swal('아이디를 입력해주세요.', '영문과 숫자, 일부 특수문자(._-) 사용 가능. 2-20자 길이','error')
                     }
-                    return alert('아이디의 형식을 확인해주세요. 영문과 숫자, 일부 특수문자(._-) 사용 가능. 2-20자 길이'),
-                        window.location.replace('/joinMem')
+                    return swal('아이디 형식을 확인해주세요.', '영문과 숫자, 일부 특수문자(._-) 사용 가능. 2-20자 길이','error')
+                    // window.location.replace('/joinMem')
                 }
                 if (pw == 0) {
-                    return alert('비밀번호를 입력해주세요.')
+                    return swal('비밀번호를 입력해주세요.', '영문과 숫자 필수 포함, 특수문자 사용 가능 8-20자 길이','error')
                 } else if (pw_chk == 0) {
-                    return alert('비밀번호 확인칸을 입력해주세요.')
+                    return swal('비밀번호 확인칸을 입력해주세요.', '영문과 숫자 필수 포함, 특수문자 사용 가능 8-20자 길이','error')
                 } else if (pw != pw_chk) {
-                    return alert('비밀번호가 일치하지 않습니다.')
+                    return swal('비밀번호가 일치하지 않습니다.','다시한번 확인해주세요!','error')
                 } else if (!(pw_chk_regEx)) {
-                    return alert('비밀번호 형식이 올바르지 않습니다.')
+                    return swal('비밀번호 형식이 올바르지 않습니다.', '영문과 숫자 필수 포함, 특수문자 사용 가능 8-20자 길이','error')
                 } else {
                     $.ajax({
                         type: "POST",
@@ -51,8 +50,14 @@ $('#join').click(function () {
                             id_give: id, pw_give: pw
                         },
                         success: function (response) {
-                            alert(response["msg"]);
-                            window.location.replace(document.referrer)
+                            swal({
+                                title: '모두의 책 리뷰 회원이 되셨습니다.',
+                                text: '메인 페이지로 이동합니다.',
+                                icon: "success",
+                            }).then(function() {
+                                window.location.replace('/');
+                            })
+
                         }
                     })
                 }
