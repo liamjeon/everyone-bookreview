@@ -55,10 +55,6 @@ p {
     background-color: #eeeeee;
 }
 
-.nav-bar .center .mainPage {
-    width: 50px;
-}
-
 .nav-bar .center .mainPage > img {
     width: 100px;
     height: 100%;
@@ -100,22 +96,23 @@ p {
     padding: 0 20px;
     font-size: 25px;
     position: relative;
+    transition: .2s;
 }
 
 .nav-bar .center .main_page > a:hover {
-    text-decoration: underline;
+    transform: scale(1.1)
 }
 
 .nav-bar .center .main_page > a::before {
     content: '';
     height: 24px;
     border-right: 1px solid #b4b2b2;
-    position: absolute;
-    top:0;
-    left:0;
+    position: relative;
+    top: 0;
+    left: 0;
 }
 
-.nav-bar .center .main_page > a:first-child::before {
+.nav-bar .center .main_page > a:first-child::before, .nav-bar .center .main_page > a:last-child::before {
     content: '';
     display: none;
 }
@@ -169,8 +166,9 @@ p {
     text-align: center;
     padding: 30px 0 35px 0;
     color: #fed;
-    font-size: 25px;
+    font-size: 33px;
     border-bottom: 1px solid #fed;
+    font-family: 'Hi Melody', cursive;
 }
 
 .login-form #id {
@@ -208,7 +206,6 @@ p {
     display: flex;
     margin:20px auto;
     text-align: center;
-    /*justify-content: center;*/
 }
 
 .login-form .login_bottom > a {
@@ -216,7 +213,9 @@ p {
     margin-top: 20px;
     color: #fed;
     padding: 10px;
+    font-size:23px;
     position: relative;
+    font-family: 'Black And White Picture', sans-serif;
 }
 
 .login-form .login_bottom > a::before {

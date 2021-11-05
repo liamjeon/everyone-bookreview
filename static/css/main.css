@@ -119,6 +119,7 @@ input, button, textarea {
     font-family: 'Hi Melody', cursive;
 }
 
+
 .nav-bar .center .main_page > a {
     margin: 10px 0;
     padding: 0 20px;
@@ -135,12 +136,12 @@ input, button, textarea {
     content: '';
     height: 24px;
     border-right: 1px solid #b4b2b2;
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
 }
 
-.nav-bar .center .main_page > a:first-child::before {
+.nav-bar .center .main_page > a:first-child::before, .nav-bar .center .main_page > a:last-child::before {
     content: '';
     display: none;
 }
@@ -452,7 +453,7 @@ input, button, textarea {
     transition: .5s;
 }
 
-.book-box:hover{
+.book-box:hover {
     transform: scale(1.1);
 }
 
@@ -596,7 +597,7 @@ input, button, textarea {
 .modal-review-input {
     width: 428px;
     height: 40px;
-    margin:5px;
+    margin: 5px;
     border: 3px solid #1AABBA;
     border-right: 0;
     border-radius: 3px;
@@ -613,7 +614,7 @@ input, button, textarea {
 #send_review {
     background-color: #1AABBA;
     position: relative;
-    right:-431px;
+    right: -431px;
     top: -45px;
     border: 3px solid #1AABBA;
     border-left: 0;

@@ -83,7 +83,7 @@ $('#user_id').keyup(function () {
                 }
 
             } else {
-                $('#wrongId').text('- 아이디의 형식을 확인해주세요.'), $('#wrongId').css('color', 'red')
+                $('#wrongId').text('- 영문과 숫자, 일부 특수문자(._-) 사용 가능. 2-20자 길이'), $('#wrongId').css('color', 'red')
             }
             if ($('#user_id').val() == 0) {
                 $('#wrongId').text('- 아이디를 입력해주세요.')
