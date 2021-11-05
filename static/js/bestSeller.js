@@ -57,7 +57,6 @@ function show_bestseller() {
 }
 
 
-
 //로그인중인지 확인
 function check_login() {
     let value = $.cookie('mytoken');
@@ -109,7 +108,9 @@ function select_book(clicked_id) {
                 let review = reviews[i]['review'];
                 let temp_html = `
                         <div class="modal-review-textbox">
-                            <td>${user_id}</td><span>: ${review}</span></td>
+                            <td>${user_id}</td><span>: ${review}</span><span id="id-comment${i}" 
+                            style="visibility:hidden;">${comment_key}</span><button class="delete_button_comment" 
+                            id="id-comment${i}" onclick="delete_comment(this.id)">삭제</button></td>
                         </div>
                  `;
                 $('#modal-reviews').append(temp_html);
@@ -145,7 +146,9 @@ function send_review() {
                 let review = reviews[i]['review'];
                 let temp_html = `
                         <div class="modal-review-textbox">
-                            <td>${user_id}</td><span>: ${review}</span></td>
+                            <td>${user_id}</td><span>: ${review}</span><span id="id-comment${i}" 
+                            style="visibility:hidden;">${comment_key}</span><button class="delete_button_comment" 
+                            id="id-comment${i}" onclick="delete_comment(this.id)">삭제</button></td>
                         </div>
                  `;
                 $('#modal-reviews').append(temp_html);
@@ -154,5 +157,16 @@ function send_review() {
     })
 }
 
-
+//추천 리뷰 삭제
+function delete_comment(id) {
+    console.log(id);
+    let comment_key = $('#' + id).text();
+    console.log(comment_key)
+    $.ajax({
+        type: "POST", url: "/delete_comment", data: {comment_key_give: comment_key}, success: function (response) {
+            alert(response["msg"]);
+            window.location.reload();
+        }
+    })
+}
 

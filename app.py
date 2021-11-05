@@ -196,16 +196,17 @@ def send_review():
     title_receive = request.form['title_give']
     review_receive = request.form['review_give']
     id_receive = request.form['id_give']
+    comment_key = db.bookReview_reviews.find().count()
 
     doc = {
         'title': title_receive,
         'review': review_receive,
         'user_id': id_receive,
+        'comment_key': id_receive + str(comment_key)
     }
 
     db.bookReview_reviews.insert(doc)
     reviews = list(db.bookReview_reviews.find({"title": title_receive}, {'_id': False}))
-    # reviews = list(db.bookReview_reviews.find({}, {'_id': False}))
     print(reviews)
     return jsonify({'reviews': reviews})
 
@@ -217,6 +218,7 @@ def get_reviews():
     print(reviews)
     return jsonify({'reviews': reviews})
 
+
 @app.route('/get_user_review', methods=['POST'])
 def get_user_review():
     title_receive = request.form['title_give']
@@ -224,10 +226,18 @@ def get_user_review():
     print(user_review)
     return jsonify({'user_review': user_review})
 
+
 @app.route('/delete', methods=['POST'])
 def read_reviews():
     img_url_receive = request.form['img_url_give']
     db.articles.delete_one({'image': img_url_receive})
+    return jsonify({'msg': '삭제완료!'})
+
+
+@app.route('/delete_comment', methods=['POST'])
+def delete_comment():
+    comment_key_receive = request.form['comment_key_give']
+    db.bookReview_reviews.delete_one({'comment_key': comment_key_receive})
     return jsonify({'msg': '삭제완료!'})
 
 
