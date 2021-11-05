@@ -1,5 +1,3 @@
-AOS.init();
-
 $('#login').click(function () {
     let id = $('#id>input').val();
     let pw = $('#pw>input').val();

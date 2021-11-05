@@ -193,7 +193,7 @@ p {
 /* join form */
 .join-form {
     width: 500px;
-    height: 500px;
+    height: 550px;
     background: linear-gradient(to right, #acc3ef 0%, cornflowerblue 50%, #acc3ef 100%);
     position: fixed;
     top: 0;
@@ -261,7 +261,7 @@ p {
     border: 0;
     cursor: pointer;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 10%;
     font-weight: bold;
     font-size: 30px;
 }
