@@ -98,9 +98,10 @@ function select_book(clicked_id){
              for(let i=0; i<reviews.length; i++){
                  let user_id = reviews[i]['user_id'];
                  let review = reviews[i]['review'];
+                 let comment_key = reviews[i]['comment_key'];
                  let temp_html = `
                         <div class="modal-review-textbox">
-                            <td>${user_id}</td><span>: ${review}</span></td>
+                            <td>${user_id}</td><span>: ${review}</span><span id="id-comment">${comment_key}</span><button onclick="delete_comment()">삭제</button></td>
                         </div>
                  `;
                  $('#modal-reviews').append(temp_html);
@@ -134,9 +135,10 @@ function send_review(){
              for(let i=0; i<reviews.length; i++){
                  let user_id = reviews[i]['user_id'];
                  let review = reviews[i]['review'];
+                 let comment_key = reviews[i]['comment_key']
                  let temp_html = `
                         <div class="modal-review-textbox">
-                            <td>${user_id}</td><span>: ${review}</span></td>
+                            <td>${user_id}</td><span>: ${review}</span><span>${comment_key}</span></td>
                         </div>
                  `;
                  $('#modal-reviews').append(temp_html);
@@ -145,5 +147,21 @@ function send_review(){
      })
 }
 
+// 추천 책 삭제
+function delete_comment() {
 
+    // let comment_key = $('#id-comment').text();
+    let comment_key = document.getElementById("#id-comment").innerText
+    console.log(comment_key)
 
+    // $.ajax({
+    //     type: "POST",
+    //     url: "/delete_comment",
+    //     data: {
+    //         comment_key_give: comment_key
+    //     }, success: function (response) {
+    //         alert(response["msg"]);
+    //         window.location.reload();
+    //     }
+    // })
+}

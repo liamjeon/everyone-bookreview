@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 import hashlib
 from bs4 import BeautifulSoup
 import requests
+from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
@@ -196,11 +197,13 @@ def send_review():
     title_receive = request.form['title_give']
     review_receive = request.form['review_give']
     id_receive = request.form['id_give']
+    comment_key = db.bookReview_reviews.find().count()
 
     doc = {
         'title': title_receive,
         'review': review_receive,
         'user_id': id_receive,
+        'comment_key': id_receive+str(comment_key)
     }
 
     db.bookReview_reviews.insert(doc)
@@ -225,9 +228,15 @@ def get_user_review():
     return jsonify({'user_review': user_review})
 
 @app.route('/delete', methods=['POST'])
-def read_reviews():
+def delete_reviews():
     img_url_receive = request.form['img_url_give']
     db.articles.delete_one({'image': img_url_receive})
+    return jsonify({'msg': '삭제완료!'})
+
+@app.route('/delete_comment', methods=['POST'])
+def delete_comment():
+    comment_key_receive = request.form['comment_key_give']
+    db.bookReview_reviews.delete_one({'comment_key': comment_key_receive})
     return jsonify({'msg': '삭제완료!'})
 
 
