@@ -92,11 +92,19 @@ function select_userbook(clicked_id) {
             let user_review = response['user_review'];
             let review_title = user_review[0]['reviewTitle'];
             let review_content = user_review[0]['reviewMemo'];
+            let review_author = user_review[0]['author'];
+            // let review_ = user_review[0]['reviewMemo'];
+            // let review_content = user_review[0]['reviewMemo'];
+
+
             console.log(user_review)
             console.log(review_title, review_content);
 
             document.getElementById('review_title').innerText = review_title;
             document.getElementById('review_content').innerText = review_content;
+            document.getElementById('modal_author').innerText = review_author;
+            // document.getElementById('modal_publisher').innerText = review_content;
+            // document.getElementById('modal_publishdate').innerText = review_content;
         }
     })
 }

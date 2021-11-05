@@ -538,6 +538,7 @@ input, button, textarea {
 #modal .content {
     margin: auto;
     /*margin-top: 20px;*/
+    width: 40%;
     padding: 0px 10px;
     text-shadow: 1px 1px 2px gray;
     color: black;
@@ -592,6 +593,8 @@ input, button, textarea {
     top: 40px;
     right: 0;
     overflow: scroll;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .modal-review-input {
@@ -669,4 +672,18 @@ input, button, textarea {
 .delete_button:hover {
     background-color: #9fc4be;
     transform: scale(1.1);
+}
+
+.modal-userreivew-title{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.modal-userreivew-content{
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+    line-height:140%;
 }
