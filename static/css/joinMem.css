@@ -49,14 +49,14 @@ p {
 }
 
 .swal-modal {
-  background-color: rgba(63,255,106,0.8);
-  border: 3px solid white;
+    background-color: rgba(63, 255, 106, 0.8);
+    border: 3px solid white;
 }
 
 .swal-title {
-  font-size: 22px;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.21);
-  margin: 0 0 28px 0;
+    font-size: 22px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.21);
+    margin: 0 0 28px 0;
 }
 
 
@@ -77,7 +77,7 @@ p {
     left: 0;
     right: 400px;
     opacity: .7;
-    margin:auto;
+    margin: auto;
 }
 
 .nav-bar .center .logo_img2 img {
@@ -86,7 +86,7 @@ p {
     left: 420px;
     right: 0;
     opacity: .4;
-    margin:auto;
+    margin: auto;
     transform: scale(1.5);
 }
 
@@ -190,14 +190,18 @@ p {
 }
 
 
-/* login form */
+/* join form */
 .join-form {
     width: 500px;
-    height: 600px;
-    background-color: cornflowerblue;
-    position: relative;
-    top: 200px;
+    height: 500px;
+    background: linear-gradient(to right, #acc3ef 0%, cornflowerblue 50%, #acc3ef 100%);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     margin: auto;
+    border-radius: 10%;
 }
 
 .join-form .title {
@@ -228,11 +232,11 @@ p {
 }
 
 .join-form #id {
-    margin : 30px auto;
+    margin: 30px auto;
 }
 
 .join-form #pw {
-    margin : 30px auto;
+    margin: 30px auto;
 }
 
 .join-form #wrongId {
@@ -244,8 +248,8 @@ p {
 
 .join-form #wrongPw {
     position: relative;
-    top:10px;
-    left:30px;
+    top: 10px;
+    left: 30px;
     font-weight: bold;
 }
 
@@ -261,4 +265,5 @@ p {
     font-weight: bold;
     font-size: 30px;
 }
+
 /**/

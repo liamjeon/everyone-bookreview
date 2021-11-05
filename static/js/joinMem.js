@@ -1,3 +1,5 @@
+AOS.init();
+
 function is_nickname(asValue) {
     let regExp = /^(?=.*[a-zA-Z])[-a-zA-Z0-9_.]{2,20}$/;
     return regExp.test(asValue);
@@ -36,7 +38,6 @@ $('#join').click(function () {
                     return swal('아이디 형식을 확인해주세요.', '영문과 숫자, 일부 특수문자(._-) 사용 가능. 2-20자 길이', 'error', {
                         button: '확인'
                     })
-                    // window.location.replace('/joinMem')
                 }
                 if (pw == 0) {
                     return swal('비밀번호를 입력해주세요.', '영문과 숫자 필수 포함, 특수문자 사용 가능 8-20자 길이', 'error', {

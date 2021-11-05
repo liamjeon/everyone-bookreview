@@ -190,10 +190,14 @@ p {
 .login-form {
     width: 500px;
     height: 500px;
-    background-color: cornflowerblue;
-    position: relative;
-    top: 200px;
+    background: linear-gradient(to right, #acc3ef 0%, cornflowerblue 50%, #acc3ef 100%);
+    position: fixed;
+    top: 0;
+    bottom:0;
+    left:0;
+    right:0;
     margin:auto;
+    border-radius: 10%;
 }
 
 .login-form > p {
