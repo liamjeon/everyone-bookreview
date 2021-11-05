@@ -685,6 +685,17 @@ input, button, textarea {
     font-family: 'Black And White Picture', sans-serif;
 }
 
+.delete_button_comment {
+    display: table-cell;
+    margin-right: 20px;
+    float:right;
+    cursor: pointer;
+    background-color: lightcyan;
+    border-radius: 10%;
+    font-size: 17px;
+    font-family: 'Black And White Picture', sans-serif;
+}
+
 .delete_button:hover {
     background-color: #9fc4be;
     transform: scale(1.1);
