@@ -3,6 +3,11 @@ $(document).ready(function () {
     check_login();
 });
 
+// 로그아웃 누를 시 쿠키 초기화
+$('.join_mem').click(function () {
+    $.removeCookie('mytoken', {path: '/'}); // = > true
+})
+
 $('.userbook-close-btn').click(function () {
     $('.modal-hide').toggleClass('opacity-off')
     $('.book-box-bg').toggleClass('opacity-on')
@@ -50,6 +55,7 @@ function show_bestseller() {
         }
     })
 }
+
 
 
 //로그인중인지 확인

@@ -24,7 +24,8 @@ $('#join').click(function () {
                 if (id_regEx) {
                     for (let i = 0; i < bookReview.length; i++) {
                         if (id === bookReview[i]['id']) {
-                            return alert('이미 존재하는 아이디입니다.'), window.location.replace('/joinMem')
+                            return alert('이미 존재하는 아이디입니다.')
+                                // , window.location.replace('/joinMem')
                         }
                     }
                 } else {
@@ -51,7 +52,7 @@ $('#join').click(function () {
                         },
                         success: function (response) {
                             alert(response["msg"]);
-                            window.location.replace('/login')
+                            window.location.replace(document.referrer)
                         }
                     })
                 }
