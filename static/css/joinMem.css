@@ -210,6 +210,16 @@ p {
     font-family: 'Hi Melody', cursive;
 }
 
+.join-form > img {
+    height: 99px;
+    position: absolute;
+    top:0;
+    right:0;
+    left:0;
+    margin:auto;
+    opacity: .2;
+}
+
 .join-form #wrongId, #wrongPw {
     color: #fed;
     text-align: center;

@@ -2,11 +2,31 @@ $(document).ready(function () {
     check_login();
 });
 
-$('.review_button').click(function () {
-    $('.review').toggleClass('opacity-off')
-    $('.book-review').toggleClass('opacity-on')
-    $('.review_button').toggleClass('opacity-on')
-})
+// 로그인 상태 유무에 따른 상황
+function check_login() {
+    let value = $.cookie('mytoken');
+
+    if (value) {
+        $('.login_no').addClass("hidden");
+        $('.login_yes').removeClass("hidden");
+        $('.review_button').click(function () {
+            $('.review').toggleClass('opacity-off')
+            $('.book-review').toggleClass('opacity-on')
+            $('.review_button').toggleClass('opacity-on')
+        })
+    } else {
+        $('.login_no').removeClass("hidden");
+        $('.login_yes').addClass("hidden");
+        $('.review_button').click(function () {
+            swal({
+                title: "로그인 후에 이용해주세요.",
+                icon: "info",
+            }).then(function () {
+                window.location.replace('login');
+            })
+        })
+    }
+}
 
 $('.review_close').click(function () {
     $('.review').toggleClass('opacity-off')
@@ -55,20 +75,6 @@ $('.select_close').click(function () {
 $('.join_mem').click(function () {
     $.removeCookie('mytoken', {path: '/'}); // = > true
 })
-
-// 로그인 상태 유무에 따른 상황
-function check_login() {
-    let value = $.cookie('mytoken');
-
-    if (value) {
-        $('.login_no').addClass("hidden");
-        $('.login_yes').removeClass("hidden");
-
-    } else {
-        $('.login_no').removeClass("hidden");
-        $('.login_yes').addClass("hidden");
-    }
-}
 
 function select_userbook(clicked_id) {
     document.getElementById("modal").style.display = 'block';
