@@ -101,7 +101,7 @@ function select_book(clicked_id){
                  let comment_key = reviews[i]['comment_key'];
                  let temp_html = `
                         <div class="modal-review-textbox">
-                            <td>${user_id}</td><span>: ${review}</span><span id="id-comment">${comment_key}</span><button onclick="delete_comment()">삭제</button></td>
+                            <td>${user_id}</td><span>: ${review}</span><span id="id-comment${i}">${comment_key}</span><button onclick="delete_comment()">삭제</button></td>
                         </div>
                  `;
                  $('#modal-reviews').append(temp_html);
