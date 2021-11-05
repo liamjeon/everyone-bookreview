@@ -19,7 +19,7 @@ https://www.youtube.com/watch?v=F7ZPA0Mku0w
 - 로그인 하지 않아도 베스트셀러 리뷰와 유저 추천 책 리뷰를 볼 수 있으나 리뷰와 유저 추천 책 등록은 로그인한 회원만 가능
 
 ## 기술 스택
-- 개발 언어 : HTML5, CSS, javascript, python, bootstrap4
+- 개발 언어 : HTML5, CSS, javascript, python
 - 개발 환경 : flask web framework
 - 데이터베이스 : mongodb
 - 형상관리 툴 : git
