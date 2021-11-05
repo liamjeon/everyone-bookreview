@@ -10,9 +10,9 @@ app = Flask(__name__)
 
 from pymongo import MongoClient
 
-# client = MongoClient('mongodb://test:test@localhost', 27017)
+# client = MongoClient('mongodb://test:test@localhost',27017)
 client = MongoClient('localhost', 27017)
-db = client.dbbook
+db = client.bookreview
 
 SECRET_KEY = '18'
 
@@ -57,9 +57,7 @@ def insert_bookinfo():
     data = requests.get('http://www.kyobobook.co.kr/bestSellerNew/bestseller.laf?orderClick=d79', headers=headers)
 
     soup = BeautifulSoup(data.text, 'html.parser')
-
     lis = soup.select('#main_contents > ul > li')
-
     db.bestseller.drop()  # bestseller 실시간 최신화를 위해 콜렉션 삭제
 
     for li in lis:
@@ -221,6 +219,7 @@ def get_reviews():
     print(reviews)
     return jsonify({'reviews': reviews})
 
+
 @app.route('/get_user_review', methods=['POST'])
 def get_user_review():
     title_receive = request.form['title_give']
@@ -228,11 +227,13 @@ def get_user_review():
     print(user_review)
     return jsonify({'user_review': user_review})
 
+
 @app.route('/delete', methods=['POST'])
 def delete_reviews():
     img_url_receive = request.form['img_url_give']
     db.articles.delete_one({'image': img_url_receive})
     return jsonify({'msg': '삭제완료!'})
+
 
 @app.route('/delete_comment', methods=['POST'])
 def delete_comment():
@@ -242,4 +243,4 @@ def delete_comment():
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=8000, debug=True)
+    app.run('0.0.0.0', port=5000, debug=True)

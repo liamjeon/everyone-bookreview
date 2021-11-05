@@ -17,18 +17,6 @@ function input_bookreview(clicked_id) {
     let title = document.getElementById("modal_title").innerHTML;
 }
 
-// function select_book(clicked_id) {
-//     // $('#modal').toggleClass('is-hidden');
-//
-//     let curr_Element = document.getElementById(clicked_id);
-//     let child_Elements = curr_Element.childNodes;
-//
-//     let title = child_Elements[3].innerHTML;
-//     let img_url = child_Elements[1]['src'];
-//
-//     document.getElementById("modal_img_url").src = img_url;
-// }
-
 function show_bestseller() {
     $.ajax({
         type: 'GET',
@@ -121,10 +109,18 @@ function modal_close() {
     document.getElementById("modal").style.display = 'none'
 }
 
+
+
+//=======================================================================
+//                             리뷰 구현
+//=======================================================================
 function send_review() {
+    //login_id를 가진 <div>안의 <span>태그 값을 가져오기위해 childNodes 값을 읽어서 login_id에 저장
     let login_id = document.getElementById("login_id").childNodes[0]['nodeValue'];
+    //리뷰 입력 모달창의 input 박스에서 입력 받은 값 저장
     let review_text = document.getElementById("review_text").value;
     let title = document.getElementById("modal_title").innerText;
+    //모달창 input 박스 비룸
     document.getElementById("review_text").value = '';
 
     $.ajax({
@@ -136,16 +132,23 @@ function send_review() {
             review_give: review_text,
         },
         success: function (response) {
+            //기존에 작성되어있던 리뷰를 지움
             $('#modal-reviews').empty();
-            let reviews = response['reviews']
+            let reviews = response['reviews'] //책 타이틀을 키 값으로 얻어온 review 정보들
 
+            //리뷰 수 만큼 반복 실행
             for (let i = 0; i < reviews.length; i++) {
                 let user_id = reviews[i]['user_id'];
                 let review = reviews[i]['review'];
                 let comment_key = reviews[i]['comment_key']
+                //user_id 출력,
+                //i 값을 이용하여 각 리뷰들을 구분하는 id 값을 넣어줌
+                //리뷰를 삭제할 때 이 아이디 값을 key 값으로 사용하게 됨.
                 let temp_html = `
                         <div class="modal-review-textbox">
-                            <td>${user_id}</td><span>: ${review}</span><span id="id-comment${i}" style="visibility:hidden;">${comment_key}</span><button class="delete_button_comment" id="id-comment${i}" onclick="delete_comment(this.id)">삭제</button></td>
+                            <td>${user_id}</td> 
+                            <span>: ${review}</span><span id="id-comment${i}" style="visibility:hidden;">${comment_key}</span>
+                            <button class="delete_button_comment" id="id-comment${i}" onclick="delete_comment(this.id)">삭제</button>
                         </div>
                  `;
                 $('#modal-reviews').append(temp_html);
@@ -154,15 +157,10 @@ function send_review() {
     })
 }
 
+
 // 추천 책 삭제
 function delete_comment(id) {
-
-    console.log(id);
     let comment_key = $('#' + id).text();
-    // let comment_key = $(`${id}`).val();
-    // let comment_key = $(`${id}`).attr('span')
-    // let comment_key = $('#id-comment').attr('span')
-    console.log(comment_key)
 
     swal("정말 삭제하시겠어요?", {
         dangerMode: true,
@@ -189,8 +187,5 @@ function delete_comment(id) {
         } else {
             $('.swal-modal').close();
         }
-
-
     })
-
 }

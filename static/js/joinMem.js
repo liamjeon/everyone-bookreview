@@ -114,7 +114,6 @@ $('#user_pw').keyup(function () {
     let pw_regEx = is_password(pw);
     let pw_chk = $('#pw_again>input').val();
 
-
     if (!(pw_regEx)) {
         $('#wrongPw').text('- 비밀번호의 형식을 확인해주세요. 영문과 숫자 필수 포함, 특수문자(!@#$%^&*) 사용가능 8-20자')
         $('#wrongPw').css('color', 'red')
