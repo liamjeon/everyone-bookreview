@@ -8,7 +8,7 @@ $('.userbook-close-btn').click(function () {
     $('.book-box-bg').toggleClass('opacity-on')
 })
 
-function input_bookreview(clicked_id){
+function input_bookreview(clicked_id) {
     let title = document.getElementById("modal_title").innerHTML;
 }
 
@@ -62,13 +62,16 @@ function check_login() {
     } else {
         $('.login_no').removeClass("hidden");
         $('.login_yes').addClass("hidden");
+        $('#review_text').addClass("opacity-on");
+        $('#send_review').addClass("opacity-on");
     }
 }
 
 
-function select_book(clicked_id){
+function select_book(clicked_id) {
     $('#modal').toggleClass('opacity-off')
     $('.book-box-bg').toggleClass('opacity-on')
+
 
     let curr_Element = document.getElementById(clicked_id);
     let child_Elements = curr_Element.childNodes;
@@ -85,64 +88,64 @@ function select_book(clicked_id){
     document.getElementById("modal_publisher").innerHTML = publisher;
     document.getElementById("modal_publishdate").innerHTML = publish_date;
 
-     $.ajax({
-         type: 'POST',
-         url: '/get_reviews',
-         data: {
-             title_give: title,
-         },
-         success: function (response) {
-             $('#modal-reviews').empty();
+    $.ajax({
+        type: 'POST',
+        url: '/get_reviews',
+        data: {
+            title_give: title,
+        },
+        success: function (response) {
+            $('#modal-reviews').empty();
 
-             let reviews = response['reviews']
-             for(let i=0; i<reviews.length; i++){
-                 let user_id = reviews[i]['user_id'];
-                 let review = reviews[i]['review'];
-                 let temp_html = `
+            let reviews = response['reviews']
+            for (let i = 0; i < reviews.length; i++) {
+                let user_id = reviews[i]['user_id'];
+                let review = reviews[i]['review'];
+                let temp_html = `
                         <div class="modal-review-textbox">
                             <td>${user_id}</td><span>: ${review}</span></td>
                         </div>
                  `;
-                 $('#modal-reviews').append(temp_html);
-             }
-         }
-     })
+                $('#modal-reviews').append(temp_html);
+            }
+        }
+    })
 }
 
-function modal_close(){
+function modal_close() {
     document.getElementById("modal").style.display = 'none'
 }
 
-function send_review(){
+function send_review() {
     let login_id = document.getElementById("login_id").childNodes[0]['nodeValue'];
     let review_text = document.getElementById("review_text").value;
     let title = document.getElementById("modal_title").innerText;
-    document.getElementById("review_text").value='';
+    document.getElementById("review_text").value = '';
 
-     $.ajax({
-         type: 'POST',
-         url: '/send_review',
-         data: {
-             id_give: login_id,
-             title_give: title, //책 구별 변수
-             review_give: review_text,
-         },
-         success: function (response) {
-             $('#modal-reviews').empty();
-             let reviews = response['reviews']
+    $.ajax({
+        type: 'POST',
+        url: '/send_review',
+        data: {
+            id_give: login_id,
+            title_give: title, //책 구별 변수
+            review_give: review_text,
+        },
+        success: function (response) {
+            $('#modal-reviews').empty();
+            let reviews = response['reviews']
 
-             for(let i=0; i<reviews.length; i++){
-                 let user_id = reviews[i]['user_id'];
-                 let review = reviews[i]['review'];
-                 let temp_html = `
+            for (let i = 0; i < reviews.length; i++) {
+                let user_id = reviews[i]['user_id'];
+                let review = reviews[i]['review'];
+                let temp_html = `
                         <div class="modal-review-textbox">
                             <td>${user_id}</td><span>: ${review}</span></td>
                         </div>
                  `;
-                 $('#modal-reviews').append(temp_html);
-             }
-         }
-     })
+                $('#modal-reviews').append(temp_html);
+            }
+        }
+    })
 }
 
 
