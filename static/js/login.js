@@ -1,4 +1,4 @@
-$('#login').click(function() {
+$('#login').click(function () {
     let id = $('#id>input').val();
     let pw = $('#pw>input').val();
 
@@ -11,9 +11,12 @@ $('#login').click(function() {
         success: function (response) {
             if (response['result'] == 'success') {
                 $.cookie('mytoken', response['token']);
-                window.location.replace(document.referrer);
+                window.location.replace('/');
             } else {
-                alert(response['msg'])
+                swal({
+                    text: '아이디 비밀번호를 정확히 입력해주세요.',
+                    icon: "error",
+                })
             }
         }
     })

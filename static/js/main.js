@@ -2,12 +2,6 @@ $(document).ready(function () {
     check_login();
 });
 
-$('.review_button').click(function () {
-    $('.review').toggleClass('opacity-off')
-    $('.book-review').toggleClass('opacity-on')
-    $('.review_button').toggleClass('opacity-on')
-})
-
 $('.review_close').click(function () {
     $('.review').toggleClass('opacity-off')
     $('.book-review').toggleClass('opacity-on')
@@ -63,10 +57,23 @@ function check_login() {
     if (value) {
         $('.login_no').addClass("hidden");
         $('.login_yes').removeClass("hidden");
+        $('.review_button').click(function () {
+            $('.review').toggleClass('opacity-off')
+            $('.book-review').toggleClass('opacity-on')
+            $('.review_button').toggleClass('opacity-on')
+        })
 
     } else {
+
         $('.login_no').removeClass("hidden");
         $('.login_yes').addClass("hidden");
+        $('.review_button').click(function () {
+
+            swal({
+                title: '로그인을 해주세요.',
+                icon: 'info',
+            })
+        })
     }
 }
 
